@@ -1451,7 +1451,6 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'build:files', [
 		'clean:files',
 		'copy:files',
-		'copy:block-json',
 		'copy:version',
 	] );
 
