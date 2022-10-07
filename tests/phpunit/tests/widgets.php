@@ -908,10 +908,10 @@ class Tests_Widgets extends WP_UnitTestCase {
 		$new_next_theme_sidebars = wp_map_sidebars_widgets( $prev_theme_sidebars );
 
 		$expected_sidebars = array(
-			'primary'             => 1,
 			'wp_inactive_widgets' => array(),
+			'primary'             => 1,
 		);
-		$this->assertEquals( $expected_sidebars, $new_next_theme_sidebars );
+		$this->assertSameSetsWithIndex( $expected_sidebars, $new_next_theme_sidebars );
 	}
 
 	/**
@@ -929,7 +929,7 @@ class Tests_Widgets extends WP_UnitTestCase {
 
 		$new_next_theme_sidebars = wp_map_sidebars_widgets( $prev_theme_sidebars );
 
-		$this->assertEquals( $prev_theme_sidebars, $new_next_theme_sidebars );
+		$this->assertSameSetsWithIndex( $prev_theme_sidebars, $new_next_theme_sidebars );
 	}
 
 	/**
@@ -952,7 +952,7 @@ class Tests_Widgets extends WP_UnitTestCase {
 			'secondary'           => array(),
 			'wp_inactive_widgets' => array(),
 		);
-		$this->assertEquals( $expected_sidebars, $new_next_theme_sidebars );
+		$this->assertSameSetsWithIndex( $expected_sidebars, $new_next_theme_sidebars );
 	}
 
 	/**
@@ -996,6 +996,6 @@ class Tests_Widgets extends WP_UnitTestCase {
 			'primary'             => array(),
 			'wp_inactive_widgets' => array(),
 		);
-		$this->assertEquals( $expected_sidebars, $new_next_theme_sidebars );
+		$this->assertSameSetsWithIndex( $expected_sidebars, $new_next_theme_sidebars );
 	}
 }
