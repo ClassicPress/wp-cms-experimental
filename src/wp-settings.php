@@ -290,12 +290,6 @@ require ABSPATH . WPINC . '/sitemaps/class-wp-sitemaps-stylesheet.php';
 require ABSPATH . WPINC . '/sitemaps/providers/class-wp-sitemaps-posts.php';
 require ABSPATH . WPINC . '/sitemaps/providers/class-wp-sitemaps-taxonomies.php';
 require ABSPATH . WPINC . '/sitemaps/providers/class-wp-sitemaps-users.php';
-require ABSPATH . WPINC . '/style-engine.php';
-require ABSPATH . WPINC . '/style-engine/class-wp-style-engine.php';
-require ABSPATH . WPINC . '/style-engine/class-wp-style-engine-css-declarations.php';
-require ABSPATH . WPINC . '/style-engine/class-wp-style-engine-css-rule.php';
-require ABSPATH . WPINC . '/style-engine/class-wp-style-engine-css-rules-store.php';
-require ABSPATH . WPINC . '/style-engine/class-wp-style-engine-processor.php';
 
 $GLOBALS['wp_embed'] = new WP_Embed();
 
