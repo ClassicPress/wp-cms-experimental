@@ -177,12 +177,28 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 		$query['channel'] = WP_AUTO_UPDATE_CORE;
 	}
 
+	/**
+	 * The Core Updates checker has been altered to get core updates from wpcms.dev and translation updates from wordpress.org
+	 * We are requesting two responses and then keeping only the respective part for each request.
+	 * Request 1 (original): Official Wordpress API: take the 'translations' part
+	 * Request 2 (added): WP-CMS API: take the 'offers' part (contains core updates)
+	 */
+
+	// Original WordPress check
 	$url      = 'http://api.wordpress.org/core/version-check/1.7/?' . http_build_query( $query, '', '&' );
 	$http_url = $url;
-	$ssl      = wp_http_supports( array( 'ssl' ) );
+
+	// WP-CMS check (only for core, not for translations)
+	// TODO - This is for now a plain json file, a real dynamic API should be created for this
+	$wpcms_url      = 'http://api.wpcms.dev/core-version.json?' . http_build_query( $query, '', '&' );
+	$wpcms_http_url = $url;
+
+	// Do we support SSL?
+	$ssl = wp_http_supports( array( 'ssl' ) );
 
 	if ( $ssl ) {
-		$url = set_url_scheme( $url, 'https' );
+		$url       = set_url_scheme( $url, 'https' );
+		$wpcms_url = set_url_scheme( $wpcms_url, 'https' );
 	}
 
 	$doing_cron = wp_doing_cron();
@@ -197,9 +213,10 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 		'body'       => $post_body,
 	);
 
-	$response = wp_remote_post( $url, $options );
+	$response       = wp_remote_post( $url, $options );
+	$wpcms_response = wp_remote_post( $wpcms_url, $options );
 
-	if ( $ssl && is_wp_error( $response ) ) {
+	if ( $ssl && ( is_wp_error( $response ) or is_wp_error( $wpcms_response ) ) ) {
 		trigger_error(
 			sprintf(
 				/* translators: %s: Support forums URL. */
@@ -208,21 +225,26 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 			) . ' ' . __( '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)' ),
 			headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE
 		);
-		$response = wp_remote_post( $http_url, $options );
+		$response       = wp_remote_post( $http_url, $options );
+		$wpcms_response = wp_remote_post( $wpcms_http_url, $options );
 	}
 
-	if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+	if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) || is_wp_error( $wpcms_response ) || 200 !== wp_remote_retrieve_response_code( $wpcms_response ) ) {
 		return;
 	}
 
 	$body = trim( wp_remote_retrieve_body( $response ) );
 	$body = json_decode( $body, true );
 
-	if ( ! is_array( $body ) || ! isset( $body['offers'] ) ) {
+	$wpcms_body = trim( wp_remote_retrieve_body( $wpcms_response ) );
+	$wpcms_body = json_decode( $wpcms_body, true );
+
+	if ( ! is_array( $body ) || ! isset( $body['offers'] ) || ! is_array( $wpcms_body ) || ! isset( $wpcms_body['offers'] ) ) {
 		return;
 	}
 
-	$offers = $body['offers'];
+	// Only check the offers for wpcms body (we will use the wordpress body to check for translations below)
+	$offers = $wpcms_body['offers'];
 
 	foreach ( $offers as &$offer ) {
 		foreach ( $offer as $offer_key => $value ) {
