@@ -1,9 +1,10 @@
 # WP-CMS (WordPress without the bloat)
 
-Welcome to the WordPress development repository! Please check out the [contributor handbook](https://make.wordpress.org/core/handbook/) for information about how to open bug reports, contribute patches, test changes, write documentation, or get involved in any way you can.
+Welcome to the WP-CMS development repository! This is a forked version of WordPress which doesn't include any Gutenberg, FSE or Blocks related code. For everything else, this is still the WordPress you know. PHP enhancements, bug fixes and overall improvements are synced with WordPress almost every day.
 
-* [Getting Started](#getting-started)
-* [Credentials](#credentials)
+To keep things simple, the word "WordPress" won't be removed from the project (admin area, code comments, ...). At least for now.
+
+In the future it would be nice to work on removing other "features", like XML-RPC, Gravatar and other bloat. Maybe then, some kind of rebranding will happen. But the main goal is to walk in pair with WordPress until as far as possible.
 
 ## Getting Started
 
