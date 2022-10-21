@@ -9,6 +9,7 @@ currently being supported with security updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 6.1.x   | :white_check_mark: |
 | 6.0.x   | :white_check_mark: |
 | 5.9.x   | :white_check_mark: |
 | 5.8.x   | :white_check_mark: |
@@ -84,10 +85,10 @@ We're committed to working with security researchers to resolve the vulnerabilit
 
 *   Follow [<span>HackerOne's disclosure guidelines</span>](https://www.hackerone.com/disclosure-guidelines).
 *   Pen-testing Production:
-    *   Please **setup a local environment** instead whenever possible. Most of our code is open source (see above).
-    *   If that's not possible, **limit any data access/modification** to the bare minimum necessary to reproduce a PoC.
-    *   **_Don't_ automate form submissions!** That's very annoying for us, because it adds extra work for the volunteers who manage those systems, and reduces the signal/noise ratio in our communication channels.
-    *   If you don't follow these guidelines **we will not award a bounty for the report.**
+	*   Please **setup a local environment** instead whenever possible. Most of our code is open source (see above).
+	*   If that's not possible, **limit any data access/modification** to the bare minimum necessary to reproduce a PoC.
+	*   **_Don't_ automate form submissions!** That's very annoying for us, because it adds extra work for the volunteers who manage those systems, and reduces the signal/noise ratio in our communication channels.
+	*   If you don't follow these guidelines **we will not award a bounty for the report.**
 *   Be Patient - Give us a reasonable time to correct the issue before you disclose the vulnerability. We care deeply about security, but we're an open-source project and our team is mostly comprised of volunteers. WordPress powers over 30% of the Web, so changes must undergo multiple levels of peer-review and testing, to make sure that they don't break millions of websites when they're installed automatically.
 
 We also expect you to comply with all applicable laws. You're responsible to pay any taxes associated with your bounties.
