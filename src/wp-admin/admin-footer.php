@@ -34,8 +34,8 @@ global $hook_suffix;
 		<?php
 		$text = sprintf(
 			/* translators: %s: https://wordpress.org/ */
-			__( 'Thank you for creating with <a href="%s">WordPress</a>.' ),
-			__( 'https://wordpress.org/' )
+			__( 'Thank you for creating with <a href="%s">WP CMS</a>.' ),
+			__( 'https://wpcms.dev/' )
 		);
 
 		/**

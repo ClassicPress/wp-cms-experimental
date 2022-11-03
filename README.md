@@ -1,12 +1,64 @@
-# WP-CMS
+# WP CMS
 
-Welcome to the WP-CMS development repository! This is a forked version of WordPress which doesn't include any Gutenberg, FSE or Blocks related code. For everything else, this is still the WordPress you know. PHP enhancements, bug fixes and overall improvements are synced with WordPress almost every day.
+Welcome to the WP CMS development repository! This is a forked version of WordPress which doesn't include any Gutenberg, FSE or Blocks related code. For everything else, this is still the WordPress you know. PHP enhancements, bug fixes and overall improvements are synced with WordPress almost every day.
 
-To keep things simple, the word "WordPress" won't be removed from the project (admin area, code comments, ...). At least for now.
+## Target users
 
-In the future it would be nice to work on removing other "features", like XML-RPC, Gravatar and other bloat. Maybe then, some kind of rebranding will happen, so that this is positioned as the WordPress version for coders, aimed towards developers who are building stuff for larger companies and need a robust CMS (not a mess like Gutenberg).
+WordPress is well-known for being easy to use and lowering the entry barrier for web development. Anyone can create a website without ever having to touch code. That is wonderful. But, when you are a developer... that sometimes gets in the way of your work. All this Gutenberg, emojis that get forced into your site, Full Site Editing... it feels like crap when you want to create something solid with a predefined markup that doesn't have to come in the form of blocks through a page builder.
 
-But the main goal is to walk in pair with WordPress until as far as possible. You won't need to re-learn anything and you can still use most plugins and online resources as long as they are not related to blocks.
+That is why WP CMS is targeted towards developers. Think of WP CMS more like a framework that you use to develop sites using PHP as a backend and whatever frontend tools and languages you enjoy using. You will have to code your own theme and plugins, using the easy and amazing "WP Way" of doing things.
+
+## Do WordPress themes and plugins still work?
+
+Sure, if they don't require blocks related code to function, they will work perfectly. But if you are the kind of developer who relies on third party plugins for everything, then I recommend you to stick with WordPress instead.
+
+This project is aimed towards users who know what they are doing. Id est:
+
+* They want to use a custom theme made specifically for their project.
+* They want to develop plugins that are specific to what they are building.
+* They may rely on third party plugins that complement their needs.
+
+## Why use this when I can just use something modern like CraftCMS?
+
+The idea is to keep everything as close to WordPress as possible, because nothing beats WordPress in terms of ease and online available resources.
+
+There are tons of tutorials and open sourced plugins out there that you can use as a base for anything you want to build. Literally... anything. CraftCMS and other platforms are amazing, but modern doesn't always mean better.
+
+WP CMS is here to cover that gap between using a kids toy like WordPress or an adults toy like CraftCMS. It's the toy that fun developers enjoy using.
+
+## Development notes
+
+For now, I'm working on this alone, using three branches:
+
+* **main** - protected, everything has to be merged through a Pull Request coming from one of the two following branches:
+  * **moving-away-from-wordpress** - Remove blocks related code, introduce changes.
+  * **moving-along-with-wordpress** - Cherrypick back from [WordPress/wordpress-develop](https://github.com/WordPress/wordpress-develop).
+
+Have ideas? Want to help?
+
+Issues and PRs welcome!
+
+## Roadmap
+
+### Short term
+
+The fundamental scope of this project is to come up with a Blocks-free version of WordPress.
+
+### Long term
+
+From the first released version, WP CMS requires at least PHP 8.1, which in the long term will allow to optimize core and refactor without having to support PHP 7...
+
+That's something that WordPress won't be able to do in decades, because they do a great job in staying backwards compatible.
+
+And that's the advantage of this fork.
+
+It's a start fresh for developers who love WordPress and at the same time hate WordPress.
+
+---
+
+# Original WordPress readme
+
+(I keep this updated with upstream too, of course)
 
 * [Getting Started](#getting-started)
 * [Credentials](#credentials)
@@ -35,7 +87,7 @@ Ensure [Docker](https://www.docker.com/products/docker-desktop) is running befor
 
 #### To start the development environment for the first time
 
-Clone the current repository using `git clone https://github.com/WordPress/wordpress-develop.git`. Then in your terminal move to the repository folder `cd wordpress-develop` and run the following commands:
+Clone the current repository using `git clone https://github.com/wp-cms/wp-cms.git`. Then in your terminal move to the repository folder `cd wp-cms` and run the following commands:
 
 ```
 npm install

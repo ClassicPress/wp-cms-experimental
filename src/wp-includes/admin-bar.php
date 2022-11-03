@@ -145,12 +145,12 @@ function wp_admin_bar_wp_menu( $wp_admin_bar ) {
 	$wp_admin_bar->add_node( $wp_logo_menu_args );
 
 	if ( $about_url ) {
-		// Add "About WordPress" link.
+		// Add "About WP CMS" link.
 		$wp_admin_bar->add_node(
 			array(
 				'parent' => 'wp-logo',
 				'id'     => 'about',
-				'title'  => __( 'About WordPress' ),
+				'title'  => __( 'About WP CMS' ),
 				'href'   => $about_url,
 			)
 		);
@@ -161,8 +161,8 @@ function wp_admin_bar_wp_menu( $wp_admin_bar ) {
 		array(
 			'parent' => 'wp-logo-external',
 			'id'     => 'wporg',
-			'title'  => __( 'WordPress.org' ),
-			'href'   => __( 'https://wordpress.org/' ),
+			'title'  => __( 'wpcms.dev' ),
+			'href'   => __( 'https://wpcms.dev/' ),
 		)
 	);
 
@@ -172,7 +172,7 @@ function wp_admin_bar_wp_menu( $wp_admin_bar ) {
 			'parent' => 'wp-logo-external',
 			'id'     => 'documentation',
 			'title'  => __( 'Documentation' ),
-			'href'   => __( 'https://wordpress.org/support/' ),
+			'href'   => __( 'https://developer.wordpress.org/reference/' ),
 		)
 	);
 
@@ -182,7 +182,7 @@ function wp_admin_bar_wp_menu( $wp_admin_bar ) {
 			'parent' => 'wp-logo-external',
 			'id'     => 'support-forums',
 			'title'  => __( 'Support' ),
-			'href'   => __( 'https://wordpress.org/support/forums/' ),
+			'href'   => __( 'https://wordpress.stackexchange.com/' ),
 		)
 	);
 
@@ -192,7 +192,7 @@ function wp_admin_bar_wp_menu( $wp_admin_bar ) {
 			'parent' => 'wp-logo-external',
 			'id'     => 'feedback',
 			'title'  => __( 'Feedback' ),
-			'href'   => __( 'https://wordpress.org/support/forum/requests-and-feedback' ),
+			'href'   => __( 'https://github.com/wp-cms/wp-cms/issues' ),
 		)
 	);
 }
