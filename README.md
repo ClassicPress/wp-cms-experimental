@@ -46,7 +46,7 @@ The fundamental scope of this project is to come up with a Blocks-free version o
 
 ### Long term
 
-From the first released version, WP CMS requires at least PHP 8.1, which in the long term will allow to optimize core and refactor without having to support PHP 7...
+From the first released version, WP CMS requires at least PHP 7.4, which in the long term will allow to optimize core and refactor without having to support ancient PHP...
 
 That's something that WordPress won't be able to do in decades, because they do a great job in staying backwards compatible.
 
