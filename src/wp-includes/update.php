@@ -189,8 +189,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	$http_url = $url;
 
 	// WP CMS check (only for core, not for translations)
-	// TODO - This is for now a plain json file, a real dynamic API should be created for this
-	$wpcms_url      = 'http://api.wpcms.dev/core-version.json?' . http_build_query( $query, '', '&' );
+	$wpcms_url      = 'http://api.wpcms.dev/core/version-check/1.0/?' . http_build_query( $query, '', '&' );
 	$wpcms_http_url = $url;
 
 	// Do we support SSL?
