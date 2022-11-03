@@ -2030,7 +2030,7 @@ function wp_welcome_panel() {
 		<div class="welcome-panel-header-image">
 			<?php echo file_get_contents( dirname( __DIR__ ) . '/images/about-header-about.svg' ); ?>
 		</div>
-		<h2><?php _e( 'Welcome to WordPress!' ); ?></h2>
+		<h2><?php _e( 'Welcome to WP CMS!' ); ?></h2>
 		<p>
 			<a href="<?php echo esc_url( admin_url( 'about.php' ) ); ?>">
 			<?php
@@ -2047,9 +2047,9 @@ function wp_welcome_panel() {
 				<path fill-rule="evenodd" clip-rule="evenodd" d="M32.0668 17.0854L28.8221 13.9454L18.2008 24.671L16.8983 29.0827L21.4257 27.8309L32.0668 17.0854ZM16 32.75H24V31.25H16V32.75Z" fill="white"/>
 			</svg>
 			<div class="welcome-panel-column-content">
-				<h3><?php _e( 'Author rich content with blocks and patterns' ); ?></h3>
-				<p><?php _e( 'Block patterns are pre-configured block layouts. Use them to get inspired or create new pages in a flash.' ); ?></p>
-				<a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=page' ) ); ?>"><?php _e( 'Add a new page' ); ?></a>
+				<h3><?php _e( 'Classic Editor' ); ?></h3>
+				<p><?php _e( 'Use the Classic Editor you already know. No more "blocky" games!' ); ?></p>
+				<a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=page' ) ); ?>"><?php _e( 'Add a new page' ); ?></a> or <a href="<?php echo esc_url( admin_url( 'post-new.php' ) ); ?>"><?php _e( 'post' ); ?></a>
 			</div>
 		</div>
 		<div class="welcome-panel-column">
@@ -2058,17 +2058,11 @@ function wp_welcome_panel() {
 				<path fill-rule="evenodd" clip-rule="evenodd" d="M18 16h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2V18a2 2 0 0 1 2-2zm12 1.5H18a.5.5 0 0 0-.5.5v3h13v-3a.5.5 0 0 0-.5-.5zm.5 5H22v8h8a.5.5 0 0 0 .5-.5v-7.5zm-10 0h-3V30a.5.5 0 0 0 .5.5h2.5v-8z" fill="#fff"/>
 			</svg>
 			<div class="welcome-panel-column-content">
-			<?php if ( $is_block_theme ) : ?>
-				<h3><?php _e( 'Customize your entire site with block themes' ); ?></h3>
-				<p><?php _e( 'Design everything on your site &#8212; from the header down to the footer, all using blocks and patterns.' ); ?></p>
-				<a href="<?php echo esc_url( admin_url( 'site-editor.php' ) ); ?>"><?php _e( 'Open site editor' ); ?></a>
-			<?php else : ?>
 				<h3><?php _e( 'Start Customizing' ); ?></h3>
 				<p><?php _e( 'Configure your site&#8217;s logo, header, menus, and more in the Customizer.' ); ?></p>
 				<?php if ( $can_customize ) : ?>
 					<a class="load-customize hide-if-no-customize" href="<?php echo wp_customize_url(); ?>"><?php _e( 'Open the Customizer' ); ?></a>
 				<?php endif; ?>
-			<?php endif; ?>
 			</div>
 		</div>
 		<div class="welcome-panel-column">
@@ -2077,15 +2071,9 @@ function wp_welcome_panel() {
 				<path fill-rule="evenodd" clip-rule="evenodd" d="M31 24a7 7 0 0 1-7 7V17a7 7 0 0 1 7 7zm-7-8a8 8 0 1 1 0 16 8 8 0 0 1 0-16z" fill="#fff"/>
 			</svg>
 			<div class="welcome-panel-column-content">
-			<?php if ( $is_block_theme ) : ?>
-				<h3><?php _e( 'Switch up your site&#8217;s look & feel with Styles' ); ?></h3>
-				<p><?php _e( 'Tweak your site, or give it a whole new look! Get creative &#8212; how about a new color palette or font?' ); ?></p>
-				<a href="<?php echo esc_url( admin_url( 'site-editor.php?styles=open' ) ); ?>"><?php _e( 'Edit styles' ); ?></a>
-			<?php else : ?>
-				<h3><?php _e( 'Discover a new way to build your site.' ); ?></h3>
-				<p><?php _e( 'There is a new kind of WordPress theme, called a block theme, that lets you build the site you&#8217;ve always wanted &#8212; with blocks and styles.' ); ?></p>
-				<a href="<?php echo esc_url( __( 'https://wordpress.org/support/article/block-themes/' ) ); ?>"><?php _e( 'Learn about block themes' ); ?></a>
-			<?php endif; ?>
+				<h3><?php _e( 'Stay tuned!' ); ?></h3>
+				<p><?php _e( 'This is the first WP CMS release, it will keep evolving, promised! :)' ); ?></p>
+				<a href="https://wpcms.dev" target="_blank"><?php _e( 'Visit Blog' ); ?></a>
 			</div>
 		</div>
 	</div>

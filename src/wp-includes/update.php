@@ -181,14 +181,14 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	 * The Core Updates checker has been altered to get core updates from wpcms.dev and translation updates from wordpress.org
 	 * We are requesting two responses and then keeping only the respective part for each request.
 	 * Request 1 (original): Official Wordpress API: take the 'translations' part
-	 * Request 2 (added): WP-CMS API: take the 'offers' part (contains core updates)
+	 * Request 2 (added): WP CMS API: take the 'offers' part (contains core updates)
 	 */
 
 	// Original WordPress check
 	$url      = 'http://api.wordpress.org/core/version-check/1.7/?' . http_build_query( $query, '', '&' );
 	$http_url = $url;
 
-	// WP-CMS check (only for core, not for translations)
+	// WP CMS check (only for core, not for translations)
 	// TODO - This is for now a plain json file, a real dynamic API should be created for this
 	$wpcms_url      = 'http://api.wpcms.dev/core-version.json?' . http_build_query( $query, '', '&' );
 	$wpcms_http_url = $url;

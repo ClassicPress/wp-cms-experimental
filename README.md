@@ -1,18 +1,12 @@
-# WP-CMS
+# WP CMS
 
-Welcome to the WP-CMS development repository! This is a forked version of WordPress which doesn't include any Gutenberg, FSE or Blocks related code. For everything else, this is still the WordPress you know. PHP enhancements, bug fixes and overall improvements are synced with WordPress almost every day.
-
-To keep things simple, the word "WordPress" won't be removed from the project (admin area, code comments, ...). At least for now.
-
-In the future it would be nice to work on removing other "features", like XML-RPC, Gravatar and other bloat. Maybe then, some kind of rebranding will happen, so that this is positioned as the WordPress version for coders, aimed towards developers who are building stuff for larger companies and need a robust CMS (not a mess like Gutenberg).
-
-But the main goal is to walk in pair with WordPress until as far as possible. You won't need to re-learn anything and you can still use most plugins and online resources as long as they are not related to blocks.
+Welcome to the WP CMS development repository! This is a forked version of WordPress which doesn't include any Gutenberg, FSE or Blocks related code. For everything else, this is still the WordPress you know. PHP enhancements, bug fixes and overall improvements are synced with WordPress almost every day.
 
 ## Target users
 
 WordPress is well-known for being easy to use and lowering the entry barrier for web development. Anyone can create a website without ever having to touch code. That is wonderful. But, when you are a developer... that sometimes gets in the way of your work. All this Gutenberg, emojis that get forced into your site, Full Site Editing... it feels like crap when you want to create something solid with a predefined markup that doesn't have to come in the form of blocks through a page builder.
 
-That is why WP-CMS is targeted towards developers. Think of WP-CMS more like a framework that you use to develop sites using PHP as a backend and whatever frontend tools and languages you enjoy using. You will have to code your own theme and plugins, using the easy and amazing "WP Way" of doing things.
+That is why WP CMS is targeted towards developers. Think of WP CMS more like a framework that you use to develop sites using PHP as a backend and whatever frontend tools and languages you enjoy using. You will have to code your own theme and plugins, using the easy and amazing "WP Way" of doing things.
 
 ## Do WordPress themes and plugins still work?
 
@@ -30,7 +24,7 @@ The idea is to keep everything as close to WordPress as possible, because nothin
 
 There are tons of tutorials and open sourced plugins out there that you can use as a base for anything you want to build. Literally... anything. CraftCMS and other platforms are amazing, but modern doesn't always mean better.
 
-WP-CMS is here to cover that gap between using a kids toy like WordPress or an adults toy like CraftCMS. It's the toy that fun developers enjoy using.
+WP CMS is here to cover that gap between using a kids toy like WordPress or an adults toy like CraftCMS. It's the toy that fun developers enjoy using.
 
 ## Development notes
 
@@ -52,7 +46,7 @@ The fundamental scope of this project is to come up with a Blocks-free version o
 
 ### Long term
 
-From the first released version, WP-CMS requires PHP 8.0, which in the long term will allow to optimize core and refactor without having to support PHP 7...
+From the first released version, WP CMS requires PHP 8.0, which in the long term will allow to optimize core and refactor without having to support PHP 7...
 
 That's something that WordPress won't be able to do in decades, because they do a great job in staying backwards compatible.
 
