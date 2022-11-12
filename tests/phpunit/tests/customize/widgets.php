@@ -25,7 +25,6 @@ class Tests_WP_Customize_Widgets extends WP_UnitTestCase {
 		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
 
 		add_theme_support( 'customize-selective-refresh-widgets' );
-		add_action( 'widgets_init', array( $this, 'remove_widgets_block_editor' ) );
 
 		$user_id = self::factory()->user->create( array( 'role' => 'administrator' ) );
 		wp_set_current_user( $user_id );
@@ -117,10 +116,6 @@ class Tests_WP_Customize_Widgets extends WP_UnitTestCase {
 		do_action( 'wp', $GLOBALS['wp'] );
 	}
 
-	public function remove_widgets_block_editor() {
-		remove_theme_support( 'widgets-block-editor' );
-	}
-
 	/**
 	 * Test WP_Customize_Widgets::__construct()
 	 */
@@ -151,10 +146,7 @@ class Tests_WP_Customize_Widgets extends WP_UnitTestCase {
 	 * @dataProvider data_customize_register_control_label_and_description
 	 * @covers       WP_Customize_Widgets::customize_register
 	 */
-	public function test_customize_register_control_label_and_description( $sidebars, $use_classic_widgets, $expected ) {
-		if ( $use_classic_widgets ) {
-			add_filter( 'use_widgets_block_editor', '__return_false' );
-		}
+	public function test_customize_register_control_label_and_description( $sidebars, $expected ) {
 
 		foreach ( $sidebars as $args ) {
 			register_sidebar( $args );
@@ -195,7 +187,6 @@ class Tests_WP_Customize_Widgets extends WP_UnitTestCase {
 						'description' => 'This is the Classic 3 sidebar.',
 					),
 				),
-				'use_classic_widgets' => true,
 				'expected'            => array(
 					'label'       => array( '', '', '' ),
 					'description' => array( '', '', '' ),
