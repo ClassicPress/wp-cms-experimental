@@ -57,22 +57,11 @@ final class WP_Theme implements ArrayAccess {
 	 * @since 5.0.0 Added the Twenty Nineteen theme.
 	 * @since 5.3.0 Added the Twenty Twenty theme.
 	 * @since 5.6.0 Added the Twenty Twenty-One theme.
+	 * @since WPCMS 6.1 Removed all themes, kept one default as example
 	 * @var string[]
 	 */
 	private static $default_themes = array(
-		'classic'           => 'WordPress Classic',
-		'default'           => 'WordPress Default',
-		'twentyten'         => 'Twenty Ten',
-		'twentyeleven'      => 'Twenty Eleven',
-		'twentytwelve'      => 'Twenty Twelve',
-		'twentythirteen'    => 'Twenty Thirteen',
-		'twentyfourteen'    => 'Twenty Fourteen',
-		'twentyfifteen'     => 'Twenty Fifteen',
-		'twentysixteen'     => 'Twenty Sixteen',
-		'twentyseventeen'   => 'Twenty Seventeen',
-		'twentynineteen'    => 'Twenty Nineteen',
-		'twentytwenty'      => 'Twenty Twenty',
-		'twentytwentyone'   => 'Twenty Twenty-One',
+		'wp-cms-example-theme' => 'Example Theme',
 	);
 
 	/**
