@@ -77,17 +77,17 @@ class Tests_WP_Customize_Manager extends WP_UnitTestCase {
 	/**
 	 * Get a core theme that is not the same as the current theme.
 	 *
-	 * @throws Exception If an inactive core Twenty* theme cannot be found.
+	 * @throws Exception If an inactive core theme cannot be found.
 	 * @return string Theme slug (stylesheet).
 	 */
 	private function get_inactive_core_theme() {
 		$stylesheet = get_stylesheet();
 		foreach ( wp_get_themes() as $theme ) {
-			if ( $theme->stylesheet !== $stylesheet && 0 === strpos( $theme->stylesheet, 'twenty' ) ) {
+			if ( $theme->stylesheet !== $stylesheet ) {
 				return $theme->stylesheet;
 			}
 		}
-		throw new Exception( 'Unable to find inactive twenty* theme.' );
+		throw new Exception( 'Unable to find inactive theme.' );
 	}
 
 	/**

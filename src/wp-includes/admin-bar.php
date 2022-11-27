@@ -182,7 +182,7 @@ function wp_admin_bar_wp_menu( $wp_admin_bar ) {
 			'parent' => 'wp-logo-external',
 			'id'     => 'support-forums',
 			'title'  => __( 'Support' ),
-			'href'   => __( 'https://wordpress.stackexchange.com/' ),
+			'href'   => __( 'https://wpcms.dev/support/' ),
 		)
 	);
 
