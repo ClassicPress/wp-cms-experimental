@@ -191,10 +191,10 @@ if ( ! function_exists( 'wp_install_defaults' ) ) :
 			$first_post = get_site_option( 'first_post' );
 
 			if ( ! $first_post ) {
-				$first_post = "<!-- wp:paragraph -->\n<p>" .
+				$first_post = "<p>" .
 				/* translators: First post content. %s: Site link. */
 				__( 'Welcome to %s. This is your first post. Edit or delete it, then start writing!' ) .
-				"</p>\n<!-- /wp:paragraph -->";
+				"</p>";
 			}
 
 			$first_post = sprintf(
@@ -206,10 +206,10 @@ if ( ! function_exists( 'wp_install_defaults' ) ) :
 			$first_post = str_replace( 'SITE_URL', esc_url( network_home_url() ), $first_post );
 			$first_post = str_replace( 'SITE_NAME', get_network()->site_name, $first_post );
 		} else {
-			$first_post = "<!-- wp:paragraph -->\n<p>" .
+			$first_post = "<p>" .
 			/* translators: First post content. %s: Site link. */
 			__( 'Welcome to WordPress. This is your first post. Edit or delete it, then start writing!' ) .
-			"</p>\n<!-- /wp:paragraph -->";
+			"</p>";
 		}
 
 		$wpdb->insert(
