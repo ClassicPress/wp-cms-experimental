@@ -96,10 +96,6 @@ module.exports = function( env = { environment: 'production', watch: false, buil
 		'wp-polyfill-dom-rect.min.js': 'polyfill-library/polyfills/__dist/DOMRect/raw.js',
 	};
 
-	const phpFiles = {
-		'block-serialization-default-parser/parser.php': 'wp-includes/class-wp-block-parser.php',
-	};
-
 	const developmentCopies = mapVendorCopies( vendors, buildTarget );
 	const minifiedCopies = mapVendorCopies( minifiedVendors, buildTarget );
 	const minifyCopies = mapVendorCopies( minifyVendors, buildTarget ).map( ( copyCommand ) => {
@@ -118,11 +114,6 @@ module.exports = function( env = { environment: 'production', watch: false, buil
 		to: normalizeJoin(baseDir, `${ buildTarget }/css/dist/${ packageName }/[name]${ suffix }.css` ),
 		transform: stylesTransform( mode ),
 		noErrorOnMissing: true,
-	} ) );
-
-	const phpCopies = Object.keys( phpFiles ).map( ( filename ) => ( {
-		from: normalizeJoin(baseDir, `node_modules/@wordpress/${ filename }` ),
-		to: normalizeJoin(baseDir, `src/${ phpFiles[ filename ] }` ),
 	} ) );
 
 	const config = {
@@ -163,7 +154,6 @@ module.exports = function( env = { environment: 'production', watch: false, buil
 				patterns: [
 					...vendorCopies,
 					...cssCopies,
-					...phpCopies,
 				],
 			} ),
 		],
