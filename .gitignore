@@ -48,7 +48,7 @@ wp-tests-config.php
 .DS_Store
 
 # Ignore other .gitignore files to allow for personal customizations
-# .gitignore
+.gitignore
 
 # Files related to applying patches
 *.rej
