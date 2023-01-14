@@ -313,7 +313,7 @@ $submenu['plugins.php'][5] = array( __( 'Installed Plugins' ), 'activate_plugins
 
 if ( ! is_multisite() ) {
 	/* translators: Add new plugin. */
-	$submenu['plugins.php'][10] = array( _x( 'Add New', 'plugin' ), 'install_plugins', 'plugin-install.php' );
+	$submenu['plugins.php'][10] = array( _x( 'Add New', 'plugin' ), 'install_plugins', 'plugin-install.php?s=classicpress&tab=search&type=term' );
 	if ( wp_is_block_theme() ) {
 		// Place the menu item below the Theme File Editor menu item.
 		add_action( 'admin_menu', '_add_plugin_file_editor_to_tools', 101 );
