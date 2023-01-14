@@ -2,7 +2,7 @@
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Twenty_One
  * @since Twenty Twenty-One 1.0
  */

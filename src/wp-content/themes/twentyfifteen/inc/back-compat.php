@@ -6,7 +6,7 @@
  * since this theme is not meant to be backward compatible beyond that and
  * relies on many newer functions and markup changes introduced in 4.1.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */

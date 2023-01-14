@@ -2,7 +2,7 @@
 /**
  * WordPress Direct Filesystem.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Filesystem
  */
 

@@ -2,7 +2,7 @@
 /**
  * WordPress media templates.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Media
  * @since 3.5.0
  */

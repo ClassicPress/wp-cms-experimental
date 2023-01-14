@@ -2,7 +2,7 @@
 /**
  * Twenty Twenty Theme: Block Patterns
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Seventeen
  * @since Twenty Seventeen 2.5
  */

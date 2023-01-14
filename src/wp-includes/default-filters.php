@@ -14,7 +14,7 @@
  * (admin area, multisite environment…), please move it
  * to a more appropriate file instead.
  *
- * @package WordPress
+ * @package ClassicPress
  */
 
 // Strip, trim, kses, special chars for string saves.

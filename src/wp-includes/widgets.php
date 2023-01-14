@@ -13,7 +13,7 @@
  * @link https://wordpress.org/support/article/wordpress-widgets/
  * @link https://developer.wordpress.org/themes/functionality/widgets/
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Widgets
  * @since 2.2.0
  */

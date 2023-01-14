@@ -7,7 +7,7 @@
  * in Twenty Twelve consists of a page content area for adding text, images, video --
  * anything you'd like -- followed by front-page-only widgets in one or two columns.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */

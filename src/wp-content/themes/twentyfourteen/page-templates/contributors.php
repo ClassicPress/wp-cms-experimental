@@ -2,7 +2,7 @@
 /**
  * Template Name: Contributor Page
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */

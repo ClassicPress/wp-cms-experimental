@@ -2,7 +2,7 @@
 /**
  * WordPress Ajax Process Execution
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  *
  * @link https://codex.wordpress.org/AJAX_in_Plugins

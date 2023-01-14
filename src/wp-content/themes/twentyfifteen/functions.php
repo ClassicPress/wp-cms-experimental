@@ -20,7 +20,7 @@
  * For more information on hooks, actions, and filters,
  * {@link https://developer.wordpress.org/plugins/}
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */

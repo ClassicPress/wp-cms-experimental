@@ -2,7 +2,7 @@
 /**
  * List Table API: WP_Privacy_Data_Export_Requests_List_Table class
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  * @since 4.9.6
  */

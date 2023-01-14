@@ -12,7 +12,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */

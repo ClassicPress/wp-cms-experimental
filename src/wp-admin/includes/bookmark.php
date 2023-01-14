@@ -2,7 +2,7 @@
 /**
  * WordPress Bookmark Administration API
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 

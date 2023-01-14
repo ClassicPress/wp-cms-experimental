@@ -3,7 +3,7 @@
  * Template Name: Cover Template
  * Template Post Type: post, page
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Twenty
  * @since Twenty Twenty 1.0
  */

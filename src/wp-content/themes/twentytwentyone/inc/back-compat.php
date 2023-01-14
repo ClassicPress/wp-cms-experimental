@@ -6,7 +6,7 @@
  * since this theme is not meant to be backward compatible beyond that and
  * relies on many newer functions and markup changes introduced in 5.3.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Twenty_One
  * @since Twenty Twenty-One 1.0
  */

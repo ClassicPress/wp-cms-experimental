@@ -2,7 +2,7 @@
 /**
  * Core Taxonomy API
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Taxonomy
  */
 

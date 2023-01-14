@@ -2,7 +2,7 @@
 /**
  * Custom template tags for this theme
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Nineteen
  * @since Twenty Nineteen 1.0
  */

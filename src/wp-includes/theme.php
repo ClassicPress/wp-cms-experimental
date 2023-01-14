@@ -2,7 +2,7 @@
 /**
  * Theme, template, and stylesheet functions.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Theme
  */
 

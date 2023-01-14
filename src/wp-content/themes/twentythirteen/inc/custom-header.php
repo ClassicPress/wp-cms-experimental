@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Custom_Headers
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Thirteen
  * @since Twenty Thirteen 1.0
  */

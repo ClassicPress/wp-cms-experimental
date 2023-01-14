@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Seventeen
  * @since Twenty Seventeen 1.0
  */

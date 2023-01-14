@@ -2,7 +2,7 @@
 /**
  * Twenty Eleven Theme Options
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */

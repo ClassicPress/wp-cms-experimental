@@ -5,7 +5,7 @@
  * @link https://developer.wordpress.org/reference/functions/register_block_pattern/
  * @link https://developer.wordpress.org/reference/functions/register_block_pattern_category/
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Twenty_One
  * @since Twenty Twenty-One 1.0
  */

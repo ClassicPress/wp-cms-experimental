@@ -2,7 +2,7 @@
 /**
  * The template for displaying image attachments
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Sixteen
  * @since Twenty Sixteen 1.0
  */

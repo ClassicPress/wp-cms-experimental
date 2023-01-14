@@ -2,7 +2,7 @@
 /**
  * Twenty Sixteen Customizer functionality
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Sixteen
  * @since Twenty Sixteen 1.0
  */

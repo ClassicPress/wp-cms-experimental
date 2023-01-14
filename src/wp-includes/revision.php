@@ -2,7 +2,7 @@
 /**
  * Post revision functions.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Post_Revisions
  */
 

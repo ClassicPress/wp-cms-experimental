@@ -4,7 +4,7 @@
  *
  * Learn more: {@link https://developer.wordpress.org/themes/basics/template-hierarchy/}
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */

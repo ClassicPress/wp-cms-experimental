@@ -2,7 +2,7 @@
 /**
  * WordPress Administration Template Footer
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 

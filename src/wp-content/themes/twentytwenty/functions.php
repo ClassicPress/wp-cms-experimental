@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Twenty
  * @since Twenty Twenty 1.0
  */

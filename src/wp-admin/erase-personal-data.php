@@ -2,7 +2,7 @@
 /**
  * Privacy tools, Erase Personal Data screen.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 

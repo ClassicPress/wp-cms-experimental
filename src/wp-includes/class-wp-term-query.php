@@ -3,7 +3,7 @@
 /**
  * Taxonomy API: WP_Term_Query class.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Taxonomy
  * @since 4.6.0
  */

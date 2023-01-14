@@ -7,7 +7,7 @@
  * @link https://developer.wordpress.org/reference/functions/wp_unique_id/
  * @link https://developer.wordpress.org/reference/functions/get_search_form/
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Twenty_One
  * @since Twenty Twenty-One 1.0
  */

@@ -2,7 +2,7 @@
 /**
  * Edit Term Administration Screen.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  * @since 4.5.0
  */

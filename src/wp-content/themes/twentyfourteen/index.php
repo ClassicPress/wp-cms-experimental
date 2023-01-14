@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */

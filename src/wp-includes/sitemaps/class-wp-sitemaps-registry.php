@@ -4,7 +4,7 @@
  *
  * Handles registering sitemap providers.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Sitemaps
  * @since 5.5.0
  */

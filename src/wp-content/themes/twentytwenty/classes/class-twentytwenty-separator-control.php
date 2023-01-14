@@ -2,7 +2,7 @@
 /**
  * Customizer Separator Control settings for this theme.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Twenty
  * @since Twenty Twenty 1.0
  */

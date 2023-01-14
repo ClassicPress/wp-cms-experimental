@@ -35,7 +35,7 @@
  *
  * For more information on hooks, actions, and filters, see https://developer.wordpress.org/plugins/.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */

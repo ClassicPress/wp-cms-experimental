@@ -8,7 +8,7 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Eleven
  */
 

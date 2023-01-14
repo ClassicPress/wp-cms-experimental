@@ -6,7 +6,7 @@
  *
  * @link https://wordpress.org/support/article/post-formats/
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */

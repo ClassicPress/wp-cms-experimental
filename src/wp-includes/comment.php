@@ -2,7 +2,7 @@
 /**
  * Core Comment API
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Comment
  */
 

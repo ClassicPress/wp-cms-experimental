@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Nineteen
  * @since Twenty Nineteen 1.0
  */

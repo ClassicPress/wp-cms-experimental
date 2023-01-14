@@ -2,7 +2,7 @@
 /**
  * Error Protection API: Functions
  *
- * @package WordPress
+ * @package ClassicPress
  * @since 5.2.0
  */
 

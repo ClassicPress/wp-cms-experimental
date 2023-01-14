@@ -6,7 +6,7 @@
  * since this theme is not meant to be backward compatible and relies on
  * many new functions and markup changes introduced in 3.6.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Thirteen
  * @since Twenty Thirteen 1.0
  */

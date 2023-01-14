@@ -2,7 +2,7 @@
 /**
  * WordPress GD Image Editor
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Image_Editor
  */
 

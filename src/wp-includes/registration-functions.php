@@ -2,7 +2,7 @@
 /**
  * Deprecated. No longer needed.
  *
- * @package WordPress
+ * @package ClassicPress
  * @deprecated 2.1.0
  */
 

@@ -2,7 +2,7 @@
 /**
  * Edit Tags Administration Screen.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 

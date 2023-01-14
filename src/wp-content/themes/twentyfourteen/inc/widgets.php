@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/widgets/#developing-widgets
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */
