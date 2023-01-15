@@ -1,4 +1,8 @@
-# WP CMS
+# WP CMS | EXPERIMENTAL!
+
+**Note**: this project may be merged into ClassicPress [(see experimental repository)](https://github.com/ClassicPress/wp-cms-experimental), and serve as a base for a new version of it. ClassicPress is more mature and if it's going to use this experimental fork as a base, it will make more sense to just work together as one.
+
+---
 
 Welcome to the WP CMS development repository! This is a forked version of WordPress which doesn't include any Gutenberg, FSE or Blocks related code. For everything else, this is still the WordPress you know. PHP enhancements, bug fixes and overall improvements are synced with WordPress almost every day.
 
