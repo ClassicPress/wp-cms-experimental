@@ -5260,11 +5260,7 @@ function wp_widgets_add_menu() {
 	}
 
 	$menu_name = __( 'Widgets' );
-	if ( wp_is_block_theme() || current_theme_supports( 'block-template-parts' ) ) {
-		$submenu['themes.php'][] = array( $menu_name, 'edit_theme_options', 'widgets.php' );
-	} else {
-		$submenu['themes.php'][7] = array( $menu_name, 'edit_theme_options', 'widgets.php' );
-	}
+	$submenu['themes.php'][7] = array( $menu_name, 'edit_theme_options', 'widgets.php' );
 
 	ksort( $submenu['themes.php'], SORT_NUMERIC );
 }
