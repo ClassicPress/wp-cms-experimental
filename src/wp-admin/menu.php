@@ -202,34 +202,12 @@ if ( ! is_multisite() && current_user_can( 'update_themes' ) ) {
 	/* translators: %s: Number of available theme updates. */
 	$submenu['themes.php'][5] = array( sprintf( __( 'Themes %s' ), $count ), $appearance_cap, 'themes.php' );
 
-if ( wp_is_block_theme() ) {
-	$submenu['themes.php'][6] = array(
-		sprintf(
-			/* translators: %s: "beta" label */
-			__( 'Editor %s' ),
-			'<span class="awaiting-mod">' . __( 'beta' ) . '</span>'
-		),
-		'edit_theme_options',
-		'site-editor.php',
-	);
-}
-
-if ( ! wp_is_block_theme() && current_theme_supports( 'block-template-parts' ) ) {
-	$submenu['themes.php'][6] = array(
-		__( 'Template Parts' ),
-		'edit_theme_options',
-		'site-editor.php?postType=wp_template_part',
-	);
-}
-
 $customize_url = add_query_arg( 'return', urlencode( remove_query_arg( wp_removable_query_args(), wp_unslash( $_SERVER['REQUEST_URI'] ) ) ), 'customize.php' );
 
 // Hide Customize link on block themes unless a plugin or theme
 // is using 'customize_register' to add a setting.
-if ( ! wp_is_block_theme() || has_action( 'customize_register' ) ) {
-	$position = ( wp_is_block_theme() || current_theme_supports( 'block-template-parts' ) ) ? 7 : 6;
-
-	$submenu['themes.php'][ $position ] = array( __( 'Customize' ), 'customize', esc_url( $customize_url ), '', 'hide-if-no-customize' );
+if ( has_action( 'customize_register' ) ) {
+	$submenu['themes.php'][6] = array( __( 'Customize' ), 'customize', esc_url( $customize_url ), '', 'hide-if-no-customize' );
 }
 
 if ( current_theme_supports( 'menus' ) || current_theme_supports( 'widgets' ) ) {
@@ -266,31 +244,11 @@ if ( ! is_multisite() ) {
  */
 function _add_themes_utility_last() {
 	add_submenu_page(
-		wp_is_block_theme() ? 'tools.php' : 'themes.php',
+		'themes.php',
 		__( 'Theme File Editor' ),
 		__( 'Theme File Editor' ),
 		'edit_themes',
 		'theme-editor.php'
-	);
-}
-
-/**
- * Adds the 'Plugin File Editor' menu item after the 'Themes File Editor' in Tools
- * for block themes.
- *
- * @access private
- * @since 5.9.0
- */
-function _add_plugin_file_editor_to_tools() {
-	if ( ! wp_is_block_theme() ) {
-		return;
-	}
-	add_submenu_page(
-		'tools.php',
-		__( 'Plugin File Editor' ),
-		__( 'Plugin File Editor' ),
-		'edit_plugins',
-		'plugin-editor.php'
 	);
 }
 
@@ -314,12 +272,7 @@ $submenu['plugins.php'][5] = array( __( 'Installed Plugins' ), 'activate_plugins
 if ( ! is_multisite() ) {
 	/* translators: Add new plugin. */
 	$submenu['plugins.php'][10] = array( _x( 'Add New', 'plugin' ), 'install_plugins', 'plugin-install.php' );
-	if ( wp_is_block_theme() ) {
-		// Place the menu item below the Theme File Editor menu item.
-		add_action( 'admin_menu', '_add_plugin_file_editor_to_tools', 101 );
-	} else {
-		$submenu['plugins.php'][15] = array( __( 'Plugin File Editor' ), 'edit_plugins', 'plugin-editor.php' );
-	}
+	$submenu['plugins.php'][15] = array( __( 'Plugin File Editor' ), 'edit_plugins', 'plugin-editor.php' );
 }
 
 unset( $update_data );

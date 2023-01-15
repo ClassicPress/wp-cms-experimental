@@ -2023,7 +2023,6 @@ function wp_dashboard_empty() {}
 function wp_welcome_panel() {
 	list( $display_version ) = explode( '-', get_bloginfo( 'version' ) );
 	$can_customize           = current_user_can( 'customize' );
-	$is_block_theme          = wp_is_block_theme();
 	?>
 	<div class="welcome-panel-content">
 	<div class="welcome-panel-header">
