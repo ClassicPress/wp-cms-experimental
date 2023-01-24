@@ -108,19 +108,8 @@ jobs:
       fail-fast: false
       matrix:
         theme: [
-            'twentytwentythree',
-            'twentytwentytwo',
-            'twentytwentyone',
-            'twentytwenty',
-            'twentynineteen',
-            'twentyseventeen',
-            'twentysixteen',
-            'twentyfifteen',
-            'twentyfourteen',
-            'twentythirteen',
-            'twentytwelve',
-            'twentyeleven',
-            'twentyten'
+            'wp-cms-example-theme',
+            'wp-cms-very-simple-theme',
         ]
 
     steps:
