@@ -1,6 +1,6 @@
 # WP CMS
 
-Welcome to the WP CMS development repository! This is a forked version of WordPress which doesn't include any Gutenberg, FSE or Blocks related code. For everything else, this is still the WordPress you know. PHP enhancements, bug fixes and overall improvements are synced with WordPress almost every day.
+Welcome to the WP CMS development repository! This is a forked version of WordPress which doesn't include any Gutenberg, FSE or Blocks related code. For everything else, this is still the WordPress you know. PHP enhancements, bug fixes and overall improvements are synced with WordPress frequently.
 
 ## Target users
 
