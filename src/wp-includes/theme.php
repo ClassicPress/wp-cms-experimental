@@ -2553,7 +2553,6 @@ function get_theme_starter_content() {
  * @since 5.5.0 The `core-block-patterns` feature was added and is enabled by default.
  * @since 5.5.0 The `custom-logo` feature now also accepts 'unlink-homepage-logo'.
  * @since 5.6.0 The `post-formats` feature warns if no array is passed as the second parameter.
- * @since 5.8.0 The `widgets-block-editor` feature enables the Widgets block editor.
  * @since 6.0.0 The `html5` feature warns if no array is passed as the second parameter.
  *
  * @global array $_wp_theme_features
@@ -2585,9 +2584,7 @@ function get_theme_starter_content() {
  *                          - 'responsive-embeds'
  *                          - 'starter-content'
  *                          - 'title-tag'
- *                          - 'wp-block-styles'
  *                          - 'widgets'
- *                          - 'widgets-block-editor'
  * @param mixed  ...$args Optional extra arguments to pass along with certain features.
  * @return void|false Void on success, false on failure.
  */

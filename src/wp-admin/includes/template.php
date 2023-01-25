@@ -1131,74 +1131,6 @@ function add_meta_box( $id, $title, $callback, $screen = null, $context = 'advan
 	);
 }
 
-
-/**
- * Renders a "fake" meta box with an information message,
- * shown on the block editor, when an incompatible meta box is found.
- *
- * @since 5.0.0
- *
- * @param mixed $data_object The data object being rendered on this screen.
- * @param array $box         {
- *     Custom formats meta box arguments.
- *
- *     @type string   $id           Meta box 'id' attribute.
- *     @type string   $title        Meta box title.
- *     @type callable $old_callback The original callback for this meta box.
- *     @type array    $args         Extra meta box arguments.
- * }
- */
-function do_block_editor_incompatible_meta_box( $data_object, $box ) {
-	$plugin  = _get_plugin_from_callback( $box['old_callback'] );
-	$plugins = get_plugins();
-	echo '<p>';
-	if ( $plugin ) {
-		/* translators: %s: The name of the plugin that generated this meta box. */
-		printf( __( 'This meta box, from the %s plugin, is not compatible with the block editor.' ), "<strong>{$plugin['Name']}</strong>" );
-	} else {
-		_e( 'This meta box is not compatible with the block editor.' );
-	}
-	echo '</p>';
-
-	if ( empty( $plugins['classic-editor/classic-editor.php'] ) ) {
-		if ( current_user_can( 'install_plugins' ) ) {
-			$install_url = wp_nonce_url(
-				self_admin_url( 'plugin-install.php?tab=favorites&user=wordpressdotorg&save=0' ),
-				'save_wporg_username_' . get_current_user_id()
-			);
-
-			echo '<p>';
-			/* translators: %s: A link to install the Classic Editor plugin. */
-			printf( __( 'Please install the <a href="%s">Classic Editor plugin</a> to use this meta box.' ), esc_url( $install_url ) );
-			echo '</p>';
-		}
-	} elseif ( is_plugin_inactive( 'classic-editor/classic-editor.php' ) ) {
-		if ( current_user_can( 'activate_plugins' ) ) {
-			$activate_url = wp_nonce_url(
-				self_admin_url( 'plugins.php?action=activate&plugin=classic-editor/classic-editor.php' ),
-				'activate-plugin_classic-editor/classic-editor.php'
-			);
-
-			echo '<p>';
-			/* translators: %s: A link to activate the Classic Editor plugin. */
-			printf( __( 'Please activate the <a href="%s">Classic Editor plugin</a> to use this meta box.' ), esc_url( $activate_url ) );
-			echo '</p>';
-		}
-	} elseif ( $data_object instanceof WP_Post ) {
-		$edit_url = add_query_arg(
-			array(
-				'classic-editor'         => '',
-				'classic-editor__forget' => '',
-			),
-			get_edit_post_link( $data_object )
-		);
-		echo '<p>';
-		/* translators: %s: A link to use the Classic Editor plugin. */
-		printf( __( 'Please open the <a href="%s">classic editor</a> to use this meta box.' ), esc_url( $edit_url ) );
-		echo '</p>';
-	}
-}
-
 /**
  * Internal helper function to find the plugin from a meta box callback.
  *
@@ -1306,33 +1238,8 @@ function do_meta_boxes( $screen, $context, $data_object ) {
 						continue;
 					}
 
-					$block_compatible = true;
-					if ( is_array( $box['args'] ) ) {
-						// If a meta box is just here for back compat, don't show it in the block editor.
-						if ( $screen->is_block_editor() && isset( $box['args']['__back_compat_meta_box'] ) && $box['args']['__back_compat_meta_box'] ) {
-							continue;
-						}
-
-						if ( isset( $box['args']['__block_editor_compatible_meta_box'] ) ) {
-							$block_compatible = (bool) $box['args']['__block_editor_compatible_meta_box'];
-							unset( $box['args']['__block_editor_compatible_meta_box'] );
-						}
-
-						// If the meta box is declared as incompatible with the block editor, override the callback function.
-						if ( ! $block_compatible && $screen->is_block_editor() ) {
-							$box['old_callback'] = $box['callback'];
-							$box['callback']     = 'do_block_editor_incompatible_meta_box';
-						}
-
-						if ( isset( $box['args']['__back_compat_meta_box'] ) ) {
-							$block_compatible = $block_compatible || (bool) $box['args']['__back_compat_meta_box'];
-							unset( $box['args']['__back_compat_meta_box'] );
-						}
-					}
-
 					$i++;
-					// get_hidden_meta_boxes() doesn't apply in the block editor.
-					$hidden_class = ( ! $screen->is_block_editor() && in_array( $box['id'], $hidden, true ) ) ? ' hide-if-js' : '';
+					$hidden_class = ( in_array( $box['id'], $hidden, true ) ) ? ' hide-if-js' : '';
 					echo '<div id="' . $box['id'] . '" class="postbox ' . postbox_classes( $box['id'], $page ) . $hidden_class . '" ' . '>' . "\n";
 
 					echo '<div class="postbox-header">';
@@ -1390,7 +1297,7 @@ function do_meta_boxes( $screen, $context, $data_object ) {
 
 					echo '<div class="inside">' . "\n";
 
-					if ( WP_DEBUG && ! $block_compatible && 'edit' === $screen->parent_base && ! $screen->is_block_editor() && ! isset( $_GET['meta-box-loader'] ) ) {
+					if ( WP_DEBUG && 'edit' === $screen->parent_base && ! isset( $_GET['meta-box-loader'] ) ) {
 						$plugin = _get_plugin_from_callback( $box['callback'] );
 						if ( $plugin ) {
 							?>

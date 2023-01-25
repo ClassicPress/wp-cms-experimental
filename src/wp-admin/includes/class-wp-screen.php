@@ -189,14 +189,6 @@ final class WP_Screen {
 	private $_screen_settings;
 
 	/**
-	 * Whether the screen is using the block editor.
-	 *
-	 * @since 5.0.0
-	 * @var bool
-	 */
-	public $is_block_editor = false;
-
-	/**
 	 * Fetches a screen object.
 	 *
 	 * @since 3.3.0
@@ -217,7 +209,6 @@ final class WP_Screen {
 		$taxonomy        = null;
 		$in_admin        = false;
 		$action          = '';
-		$is_block_editor = false;
 
 		if ( $hook_name ) {
 			$id = $hook_name;
@@ -307,13 +298,6 @@ final class WP_Screen {
 						$post = get_post( $post_id );
 						if ( $post ) {
 							$post_type = $post->post_type;
-
-							/** This filter is documented in wp-admin/post.php */
-							$replace_editor = apply_filters( 'replace_editor', false, $post );
-
-							if ( ! $replace_editor ) {
-								$is_block_editor = use_block_editor_for_post( $post );
-							}
 						}
 					}
 					break;
@@ -334,12 +318,6 @@ final class WP_Screen {
 				if ( null === $post_type ) {
 					$post_type = 'post';
 				}
-
-				// When creating a new post, use the default block editor support value for the post type.
-				if ( empty( $post_id ) ) {
-					$is_block_editor = use_block_editor_for_post_type( $post_type );
-				}
-
 				$id = $post_type;
 				break;
 			case 'edit':
@@ -390,7 +368,6 @@ final class WP_Screen {
 		$screen->is_user         = ( 'user' === $in_admin );
 		$screen->is_network      = ( 'network' === $in_admin );
 		$screen->in_admin        = $in_admin;
-		$screen->is_block_editor = $is_block_editor;
 
 		self::$_registry[ $id ] = $screen;
 
@@ -446,22 +423,6 @@ final class WP_Screen {
 		}
 
 		return ( $admin === $this->in_admin );
-	}
-
-	/**
-	 * Sets or returns whether the block editor is loading on the current screen.
-	 *
-	 * @since 5.0.0
-	 *
-	 * @param bool $set Optional. Sets whether the block editor is loading on the current screen or not.
-	 * @return bool True if the block editor is being loaded, false otherwise.
-	 */
-	public function is_block_editor( $set = null ) {
-		if ( null !== $set ) {
-			$this->is_block_editor = (bool) $set;
-		}
-
-		return $this->is_block_editor;
 	}
 
 	/**
