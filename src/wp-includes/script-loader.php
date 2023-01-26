@@ -603,10 +603,10 @@ function wp_tinymce_inline_scripts() {
  * @param WP_Scripts $scripts WP_Scripts object.
  */
 function wp_default_packages( $scripts ) {
-	wp_default_packages_vendor( $scripts );
-	wp_register_development_scripts( $scripts );
+	//wp_default_packages_vendor( $scripts );
+	//wp_register_development_scripts( $scripts );
 	wp_register_tinymce_scripts( $scripts );
-	wp_default_packages_scripts( $scripts );
+	//wp_default_packages_scripts( $scripts );
 
 	if ( did_action( 'init' ) ) {
 		wp_default_packages_inline_scripts( $scripts );
@@ -693,6 +693,8 @@ function wp_default_scripts( $scripts ) {
 	$scripts->set_translations( 'common' );
 
 	$scripts->add( 'wp-sanitize', "/wp-includes/js/wp-sanitize$suffix.js", array(), false, 1 );
+
+	$scripts->add( 'wp-a11y', "/wp-includes/js/wp-a11y$suffix.js", array( 'jquery' ), false, 1 );
 
 	$scripts->add( 'sack', "/wp-includes/js/tw-sack$suffix.js", array(), '1.6.1', 1 );
 
@@ -1572,100 +1574,6 @@ function wp_default_styles( $styles ) {
 		$fonts_url = 'https://fonts.googleapis.com/css?family=' . urlencode( $font_family );
 	}
 	$styles->add( 'wp-editor-font', $fonts_url ); // No longer used in core as of 5.7.
-	$block_library_theme_path = WPINC . "/css/dist/block-library/theme$suffix.css";
-	$styles->add( 'wp-block-library-theme', "/$block_library_theme_path" );
-	$styles->add_data( 'wp-block-library-theme', 'path', ABSPATH . $block_library_theme_path );
-
-	$styles->add(
-		'wp-reset-editor-styles',
-		"/wp-includes/css/dist/block-library/reset$suffix.css",
-		array( 'common', 'forms' ) // Make sure the reset is loaded after the default WP Admin styles.
-	);
-
-	$styles->add(
-		'wp-editor-classic-layout-styles',
-		"/wp-includes/css/dist/edit-post/classic$suffix.css",
-		array()
-	);
-
-	$wp_edit_blocks_dependencies = array(
-		'wp-components',
-		'wp-editor',
-		// This need to be added before the block library styles,
-		// The block library styles override the "reset" styles.
-		'wp-reset-editor-styles',
-		'wp-block-library',
-		'wp-reusable-blocks',
-	);
-
-	if ( ! is_array( $editor_styles ) || count( $editor_styles ) === 0 ) {
-		// Include opinionated block styles if no $editor_styles are declared, so the editor never appears broken.
-		$wp_edit_blocks_dependencies[] = 'wp-block-library-theme';
-	}
-
-	$styles->add(
-		'wp-edit-blocks',
-		"/wp-includes/css/dist/block-library/editor$suffix.css",
-		$wp_edit_blocks_dependencies
-	);
-
-	$package_styles = array(
-		'block-editor'         => array( 'wp-components' ),
-		'block-library'        => array(),
-		'block-directory'      => array(),
-		'components'           => array(),
-		'edit-post'            => array(
-			'wp-components',
-			'wp-block-editor',
-			'wp-editor',
-			'wp-edit-blocks',
-			'wp-block-library',
-			'wp-nux',
-		),
-		'editor'               => array(
-			'wp-components',
-			'wp-block-editor',
-			'wp-nux',
-			'wp-reusable-blocks',
-		),
-		'format-library'       => array(),
-		'list-reusable-blocks' => array( 'wp-components' ),
-		'reusable-blocks'      => array( 'wp-components' ),
-		'nux'                  => array( 'wp-components' ),
-		'widgets'              => array(
-			'wp-components',
-		),
-		'edit-widgets'         => array(
-			'wp-widgets',
-			'wp-block-editor',
-			'wp-edit-blocks',
-			'wp-block-library',
-			'wp-reusable-blocks',
-		),
-		'customize-widgets'    => array(
-			'wp-widgets',
-			'wp-block-editor',
-			'wp-edit-blocks',
-			'wp-block-library',
-			'wp-reusable-blocks',
-		),
-		'edit-site'            => array(
-			'wp-components',
-			'wp-block-editor',
-			'wp-edit-blocks',
-		),
-	);
-
-	foreach ( $package_styles as $package => $dependencies ) {
-		$handle = 'wp-' . $package;
-		$path   = "/wp-includes/css/dist/$package/style$suffix.css";
-
-		if ( 'block-library' === $package && wp_should_load_separate_core_block_assets() ) {
-			$path = "/wp-includes/css/dist/$package/common$suffix.css";
-		}
-		$styles->add( $handle, $path, $dependencies );
-		$styles->add_data( $handle, 'path', ABSPATH . $path );
-	}
 
 	// RTL CSS.
 	$rtl_styles = array(

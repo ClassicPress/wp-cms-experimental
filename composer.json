@@ -1,0 +1,32 @@
+{
+	"name": "classicpress/classicpress",
+	"license": "GPL-2.0-or-later",
+	"description": "ClassicPress is open source software you can use to create a beautiful website, blog, or app.",
+	"homepage": "https://classicpress.net",
+	"keywords": [
+		"blog", "cms", "classicpress", "cp"
+	],
+	"support": {
+		"issues": "https://github.com/ClassicPress/ClassicPress"
+	},
+	"require": {
+		"php": ">=5.6"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "1.0.0",
+		"wp-coding-standards/wpcs": "2.3.0",
+		"phpcompatibility/phpcompatibility-wp": "2.1.4",
+		"yoast/phpunit-polyfills": "1.0.4"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"backport": "bin/backport-wp-commit.sh",
+		"phpcs": "vendor/bin/phpcs -n",
+		"phpcs-tests": "vendor/bin/phpcs -n tests",
+		"phpunit": "vendor/bin/phpunit"
+	}
+}
