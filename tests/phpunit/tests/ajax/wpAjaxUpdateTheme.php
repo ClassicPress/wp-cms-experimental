@@ -110,7 +110,7 @@ class Tests_Ajax_wpAjaxUpdateTheme extends WP_Ajax_UnitTestCase {
 		$this->_setRole( 'administrator' );
 
 		$_POST['_ajax_nonce'] = wp_create_nonce( 'updates' );
-		$_POST['slug']        = 'twentyten';
+		$_POST['slug']        = 'wp-cms-example-theme';
 
 		// Prevent wp_update_themes() from running.
 		wp_installing( true );
@@ -127,12 +127,12 @@ class Tests_Ajax_wpAjaxUpdateTheme extends WP_Ajax_UnitTestCase {
 		// Get the response.
 		$response = json_decode( $this->_last_response, true );
 
-		$theme    = wp_get_theme( 'twentyten' );
+		$theme    = wp_get_theme( 'wp-cms-example-theme' );
 		$expected = array(
 			'success' => false,
 			'data'    => array(
 				'update'       => 'theme',
-				'slug'         => 'twentyten',
+				'slug'         => 'wp-cms-example-theme',
 				'oldVersion'   => $theme->get( 'Version' ),
 				'newVersion'   => '',
 				'debug'        => array( 'The theme is at the latest version.' ),
