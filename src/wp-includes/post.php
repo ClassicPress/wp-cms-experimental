@@ -3808,7 +3808,6 @@ function wp_get_recent_posts( $args = array(), $output = ARRAY_A ) {
  *
  * @since 1.0.0
  * @since 2.6.0 Added the `$wp_error` parameter to allow a WP_Error to be returned on failure.
- * @since 4.2.0 Support was added for encoding emoji in the post title, content, and excerpt.
  * @since 4.4.0 A 'meta_input' array can now be passed to `$postarr` to add post meta data.
  * @since 5.6.0 Added the `$fire_after_hooks` parameter.
  *
@@ -4200,18 +4199,6 @@ function wp_insert_post( $postarr, $wp_error = false, $fire_after_hooks = true )
 		'post_mime_type',
 		'guid'
 	);
-
-	$emoji_fields = array( 'post_title', 'post_content', 'post_excerpt' );
-
-	foreach ( $emoji_fields as $emoji_field ) {
-		if ( isset( $data[ $emoji_field ] ) ) {
-			$charset = $wpdb->get_col_charset( $wpdb->posts, $emoji_field );
-
-			if ( 'utf8' === $charset ) {
-				$data[ $emoji_field ] = wp_encode_emoji( $data[ $emoji_field ] );
-			}
-		}
-	}
 
 	if ( 'attachment' === $post_type ) {
 		/**

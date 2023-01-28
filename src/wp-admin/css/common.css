@@ -731,19 +731,6 @@ ul.striped > :nth-child(odd),
 	color: #8c8f94; /* same as new icons */
 }
 
-/* For emoji replacement images */
-img.emoji {
-	display: inline !important;
-	border: none !important;
-	height: 1em !important;
-	width: 1em !important;
-	margin: 0 .07em !important;
-	vertical-align: -0.1em !important;
-	background: none !important;
-	padding: 0 !important;
-	box-shadow: none !important;
-}
-
 /*------------------------------------------------------------------------------
   1.0 - Text Styles
 ------------------------------------------------------------------------------*/
@@ -3160,7 +3147,6 @@ img {
 	font-family: Consolas, Monaco, monospace;
 	font-size: 13px;
 	background: #f6f7f7;
-	-o-tab-size: 4;
 	tab-size: 4;
 }
 

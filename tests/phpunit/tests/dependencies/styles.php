@@ -28,7 +28,6 @@ class Tests_Dependencies_Styles extends WP_UnitTestCase {
 		$this->old_wp_styles = $GLOBALS['wp_scripts'];
 
 		remove_action( 'wp_default_styles', 'wp_default_styles' );
-		remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 		$GLOBALS['wp_styles']                  = new WP_Styles();
 		$GLOBALS['wp_styles']->default_version = get_bloginfo( 'version' );
@@ -42,11 +41,6 @@ class Tests_Dependencies_Styles extends WP_UnitTestCase {
 		$GLOBALS['wp_scripts'] = $this->old_wp_scripts;
 
 		add_action( 'wp_default_styles', 'wp_default_styles' );
-		add_action( 'wp_print_styles', 'print_emoji_styles' );
-
-		if ( current_theme_supports( 'wp-block-styles' ) ) {
-			remove_theme_support( 'wp-block-styles' );
-		}
 
 		parent::tear_down();
 	}

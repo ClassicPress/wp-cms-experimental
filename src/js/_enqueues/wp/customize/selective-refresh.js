@@ -436,9 +436,6 @@ wp.customize.selectiveRefresh = ( function( $, api ) {
 			/* jshint ignore:end */
 			try {
 				content = placement.addedContent;
-				if ( wp.emoji && wp.emoji.parse && ! $.contains( document.head, placement.container[0] ) ) {
-					content = wp.emoji.parse( content );
-				}
 
 				if ( partial.params.containerInclusive ) {
 
