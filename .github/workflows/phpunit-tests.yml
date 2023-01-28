@@ -53,12 +53,6 @@ jobs:
             os: ubuntu-latest
             memcached: true
             multisite: true
-          # Report the results of the PHP 7.4 without memcached job.
-          - php: '7.4'
-            os: ubuntu-latest
-            memcached: false
-            multisite: false
-            report: true
 
     env:
       LOCAL_PHP: ${{ matrix.php }}-fpm
