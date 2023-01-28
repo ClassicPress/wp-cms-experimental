@@ -24,7 +24,6 @@ const exportDefaultPackages = [
 	'api-fetch',
 	'deprecated',
 	'dom-ready',
-	'redux-routine',
 	'token-list',
 	'server-side-render',
 	'shortcode',
@@ -72,8 +71,6 @@ module.exports = function( env = { environment: 'production', watch: false, buil
 		'wp-polyfill-formdata.js': 'formdata-polyfill/FormData.js',
 		'wp-polyfill-object-fit.js': 'objectFitPolyfill/src/objectFitPolyfill.js',
 		'moment.js': 'moment/moment.js',
-		'react.js': 'react/umd/react.development.js',
-		'react-dom.js': 'react-dom/umd/react-dom.development.js',
 		'regenerator-runtime.js': 'regenerator-runtime/runtime.js',
 	};
 
@@ -84,8 +81,6 @@ module.exports = function( env = { environment: 'production', watch: false, buil
 		'wp-polyfill-url.min.js': 'core-js-url-browser/url.min.js',
 		'wp-polyfill-object-fit.min.js': 'objectFitPolyfill/dist/objectFitPolyfill.min.js',
 		'moment.min.js': 'moment/min/moment.min.js',
-		'react.min.js': 'react/umd/react.production.min.js',
-		'react-dom.min.js': 'react-dom/umd/react-dom.production.min.js',
 	};
 
 	const minifyVendors = {
