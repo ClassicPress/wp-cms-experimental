@@ -482,6 +482,10 @@ function get_theme_feature_list( $api = true ) {
  * @return object|array|WP_Error Response object or array on success, WP_Error on failure. See the
  *         {@link https://developer.wordpress.org/reference/functions/themes_api/ function reference article}
  *         for more information on the make-up of possible return objects depending on the value of `$action`.
+ * WP CMS: use the WordPress infrastructure, to allow users access the Wordpress directory,
+ * but only for whitelisted themes that are known to work on WP-CMS.
+ * That's why for now we will show one page only, with whitelisted themes.
+ * It's the easiest way to keep using the WordPress infrastructure without making big changes.
  */
 function themes_api( $action, $args = array() ) {
 	// Include an unmodified $wp_version.
@@ -493,7 +497,8 @@ function themes_api( $action, $args = array() ) {
 
 	if ( 'query_themes' === $action ) {
 		if ( ! isset( $args->per_page ) ) {
-			$args->per_page = 24;
+			// Load them all on one page, if we are whitelisting the results, cannot control multiple pages
+			$args->per_page = 0;
 		}
 	}
 
@@ -615,6 +620,23 @@ function themes_api( $action, $args = array() ) {
 				$res = (array) $res;
 			}
 		}
+	}
+
+
+	// Whitelist and update $res object
+	if( isset( $res->themes ) and is_array( $res->themes ) ) {
+		$whitelist_of_slugs = array(
+			'yuma-blogger',
+		);
+		$whitelisted_themes = array();
+		foreach ( $res->themes as $theme ) {
+			// Themes are returned as an object (plugins as an array)
+			if ( in_array( $theme->slug, $whitelist_of_slugs ) ) {
+				$whitelisted_themes[] = $theme;
+			}
+		}
+		$res->info['results'] = count( $whitelisted_themes );
+		$res->themes          = $whitelisted_themes;
 	}
 
 	/**

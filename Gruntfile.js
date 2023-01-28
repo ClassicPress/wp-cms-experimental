@@ -26,11 +26,8 @@ module.exports = function(grunt) {
 			'wp-admin/**', // Include everything in wp-admin.
 			'wp-content/index.php',
 			'wp-content/themes/index.php',
-			'wp-content/themes/twenty*/**',
+			'wp-content/themes/wp-cms*/**',
 			'wp-content/plugins/index.php',
-			'wp-content/plugins/hello.php',
-			'wp-content/plugins/akismet/**',
-			'!wp-content/themes/twenty*/node_modules/**',
 		],
 		changedFiles = {
 			php: []
@@ -990,28 +987,6 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		jsvalidate:{
-			options: {
-				globals: {},
-				esprimaOptions:{},
-				verbose: false
-			},
-			build: {
-				files: {
-					src: [
-						WORKING_DIR + 'wp-{admin,includes}/**/*.js',
-						WORKING_DIR + 'wp-content/themes/twenty*/**/*.js',
-						'!' + WORKING_DIR + 'wp-content/themes/twenty*/node_modules/**/*.js',
-						'!' + WORKING_DIR + 'wp-includes/js/dist/**/*.js',
-					]
-				}
-			},
-			dynamic: {
-				files: {
-					src: []
-				}
-			}
-		},
 		imagemin: {
 			core: {
 				expand: true,
@@ -1136,7 +1111,7 @@ module.exports = function(grunt) {
 			},
 			'js-enqueues': {
 				files: [SOURCE_DIR + 'js/_enqueues/**/*.js'],
-				tasks: ['clean:dynamic', 'copy:dynamic-js', 'uglify:dynamic', 'jsvalidate:dynamic'],
+				tasks: ['clean:dynamic', 'copy:dynamic-js', 'uglify:dynamic'],
 				options: {
 					dot: true,
 					spawn: false
@@ -1148,7 +1123,7 @@ module.exports = function(grunt) {
 					'!' + SOURCE_DIR + 'js/_enqueues/**/*.js',
 					'webpack-dev.config.js'
 				],
-				tasks: ['clean:dynamic', 'webpack:dev', 'uglify:dynamic', 'jsvalidate:dynamic'],
+				tasks: ['clean:dynamic', 'webpack:dev', 'uglify:dynamic'],
 				options: {
 					dot: true,
 					spawn: false
@@ -1217,36 +1192,6 @@ module.exports = function(grunt) {
 		'phpunit:restapi-jsclient',
 		'qunit:compiled'
 	] );
-
-	grunt.registerTask( 'sync-gutenberg-packages', function() {
-		if ( grunt.option( 'update-browserlist' ) ) {
-			/*
-			 * Updating the browserlist database is opt-in and up to the release lead.
-			 *
-			 * Browserlist database should be updated:
-			 * - In each release cycle up until RC1
-			 * - If Webpack throws a warning about an outdated database
-			 *
-			 * It should not be updated:
-			 * - After the RC1
-			 * - When backporting fixes to older WordPress releases.
-			 *
-			 * For more context, see:
-			 * https://github.com/WordPress/wordpress-develop/pull/2621#discussion_r859840515
-			 * https://core.trac.wordpress.org/ticket/55559
-			 */
-			grunt.task.run( 'browserslist:update' );
-		}
-
-		// Install the latest version of the packages already listed in package.json.
-		grunt.task.run( 'wp-packages:update' );
-
-		/*
-		 * Install any new @wordpress packages that are now required.
-		 * Update any non-@wordpress deps to the same version as required in the @wordpress packages (e.g. react 16 -> 17).
-		 */
-		grunt.task.run( 'wp-packages:refresh-deps' );
-	} );
 
 	grunt.renameTask( 'watch', '_watch' );
 
@@ -1432,8 +1377,7 @@ module.exports = function(grunt) {
 		'file_append',
 		'uglify:all',
 		'concat:tinymce',
-		'concat:emoji',
-		'jsvalidate:build'
+		'concat:emoji'
 	] );
 
 	grunt.registerTask( 'build:css', [
@@ -1686,15 +1630,6 @@ module.exports = function(grunt) {
 		} );
 	} );
 
-	grunt.registerTask( 'wp-packages:refresh-deps', 'Update version of dependencies in package.json to match the ones listed in the latest WordPress packages', function() {
-		const distTag = grunt.option('dist-tag') || 'latest';
-		grunt.log.writeln( `Updating versions of dependencies listed in package.json (--dist-tag=${distTag})` );
-		spawn( 'node', [ 'tools/release/sync-gutenberg-packages.js', `--dist-tag=${distTag}` ], {
-			cwd: __dirname,
-			stdio: 'inherit',
-		} );
-	} );
-
 	// Patch task.
 	grunt.renameTask('patch_wordpress', 'patch');
 
@@ -1763,15 +1698,6 @@ module.exports = function(grunt) {
 			if ( action !== 'deleted' ) {
 				grunt.config( [ 'copy', 'dynamic-js', 'files' ], files );
 			}
-		// For the webpack builds configure the jsvalidate task to only check those files build by webpack.
-		} else if ( target === 'js-webpack' ) {
-			src = [
-				'wp-includes/js/media-audiovideo.js',
-				'wp-includes/js/media-grid.js',
-				'wp-includes/js/media-models.js',
-				'wp-includes/js/media-views.js'
-			];
-		// Else simply use the path relative to the source directory.
 		} else {
 			src = [ path.relative( SOURCE_DIR, filepath ) ];
 		}
@@ -1791,11 +1717,11 @@ module.exports = function(grunt) {
 			// For javascript also minify and validate the changed file.
 			if ( target === 'js-enqueues' ) {
 				grunt.config( [ 'uglify', 'dynamic', 'src' ], src );
-				grunt.config( [ 'jsvalidate', 'dynamic', 'files', 'src' ], src.map( function( dir ) { return  WORKING_DIR + dir; } ) );
+				grunt.config( [ 'dynamic', 'files', 'src' ], src.map( function( dir ) { return  WORKING_DIR + dir; } ) );
 			}
 			// For webpack only validate the file, minification is handled by webpack itself.
 			if ( target === 'js-webpack' ) {
-				grunt.config( [ 'jsvalidate', 'dynamic', 'files', 'src' ], src.map( function( dir ) { return  WORKING_DIR + dir; } ) );
+				grunt.config( [ 'dynamic', 'files', 'src' ], src.map( function( dir ) { return  WORKING_DIR + dir; } ) );
 			}
 			// For css run the rtl task on just the changed file.
 			if ( target === 'rtl' ) {
