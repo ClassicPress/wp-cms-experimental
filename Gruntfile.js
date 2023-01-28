@@ -192,7 +192,6 @@ module.exports = function(grunt) {
 						[ WORKING_DIR + 'wp-includes/js/jquery/jquery.form.js' ]: [ './node_modules/jquery-form/src/jquery.form.js' ],
 						[ WORKING_DIR + 'wp-includes/js/jquery/jquery.color.min.js' ]: [ './node_modules/jquery-color/dist/jquery.color.min.js' ],
 						[ WORKING_DIR + 'wp-includes/js/masonry.min.js' ]: [ './node_modules/masonry-layout/dist/masonry.pkgd.min.js' ],
-						[ WORKING_DIR + 'wp-includes/js/twemoji.js' ]: [ './node_modules/twemoji/dist/twemoji.js' ],
 						[ WORKING_DIR + 'wp-includes/js/underscore.js' ]: [ './node_modules/underscore/underscore.js' ],
 					}
 				]
@@ -325,8 +324,6 @@ module.exports = function(grunt) {
 					[ WORKING_DIR + 'wp-includes/js/wp-custom-header.js' ]: [ './src/js/_enqueues/wp/custom-header.js' ],
 					[ WORKING_DIR + 'wp-includes/js/wp-embed-template.js' ]: [ './src/js/_enqueues/lib/embed-template.js' ],
 					[ WORKING_DIR + 'wp-includes/js/wp-embed.js' ]: [ './src/js/_enqueues/wp/embed.js' ],
-					[ WORKING_DIR + 'wp-includes/js/wp-emoji-loader.js' ]: [ './src/js/_enqueues/lib/emoji-loader.js' ],
-					[ WORKING_DIR + 'wp-includes/js/wp-emoji.js' ]: [ './src/js/_enqueues/wp/emoji.js' ],
 					[ WORKING_DIR + 'wp-includes/js/wp-list-revisions.js' ]: [ './src/js/_enqueues/lib/list-revisions.js' ],
 					[ WORKING_DIR + 'wp-includes/js/wp-lists.js' ]: [ './src/js/_enqueues/lib/lists.js' ],
 					[ WORKING_DIR + 'wp-includes/js/wp-pointer.js' ]: [ './src/js/_enqueues/lib/pointer.js' ],
@@ -782,19 +779,6 @@ module.exports = function(grunt) {
 					WORKING_DIR + 'wp-includes/js/tinymce/plugins/*/plugin.min.js'
 				],
 				dest: WORKING_DIR + 'wp-includes/js/tinymce/wp-tinymce.js'
-			},
-			emoji: {
-				options: {
-					separator: '\n',
-					process: function( src, filepath ) {
-						return '// Source: ' + filepath.replace( WORKING_DIR, '' ) + '\n' + src;
-					}
-				},
-				src: [
-					WORKING_DIR + 'wp-includes/js/twemoji.min.js',
-					WORKING_DIR + 'wp-includes/js/wp-emoji.min.js'
-				],
-				dest: WORKING_DIR + 'wp-includes/js/wp-emoji-release.min.js'
 			}
 		},
 		patch:{
@@ -877,8 +861,6 @@ module.exports = function(grunt) {
 					'src/wp-includes/js/wp-custom-header.js': 'src/js/_enqueues/wp/custom-header.js',
 					'src/wp-includes/js/wp-embed-template.js': 'src/js/_enqueues/lib/embed-template.js',
 					'src/wp-includes/js/wp-embed.js': 'src/js/_enqueues/wp/embed.js',
-					'src/wp-includes/js/wp-emoji-loader.js': 'src/js/_enqueues/lib/emoji-loader.js',
-					'src/wp-includes/js/wp-emoji.js': 'src/js/_enqueues/wp/emoji.js',
 					'src/wp-includes/js/wp-list-revisions.js': 'src/js/_enqueues/lib/list-revisions.js',
 					'src/wp-includes/js/wp-lists.js': 'src/js/_enqueues/lib/lists.js',
 					'src/wp-includes/js/wp-pointer.js': 'src/js/_enqueues/lib/pointer.js',
@@ -999,78 +981,6 @@ module.exports = function(grunt) {
 			}
 		},
 		replace: {
-			'emoji-regex': {
-				options: {
-					patterns: [
-						{
-							match: /\/\/ START: emoji arrays[\S\s]*\/\/ END: emoji arrays/g,
-							replacement: function() {
-								var regex, files,
-									partials, partialsSet,
-									entities, emojiArray;
-
-								grunt.log.writeln( 'Fetching list of Twemoji files...' );
-
-								// Fetch a list of the files that Twemoji supplies.
-								files = spawn( 'svn', [ 'ls', 'https://github.com/twitter/twemoji.git/trunk/assets/svg' ] );
-								if ( 0 !== files.status ) {
-									grunt.fatal( 'Unable to fetch Twemoji file list' );
-								}
-
-								entities = files.stdout.toString();
-
-								// Tidy up the file list.
-								entities = entities.replace( /\.svg/g, '' );
-								entities = entities.replace( /^$/g, '' );
-
-								// Convert the emoji entities to HTML entities.
-								partials = entities = entities.replace( /([a-z0-9]+)/g, '&#x$1;' );
-
-								// Remove the hyphens between the HTML entities.
-								entities = entities.replace( /-/g, '' );
-
-								// Sort the entities list by length, so the longest emoji will be found first.
-								emojiArray = entities.split( '\n' ).sort( function( a, b ) {
-									return b.length - a.length;
-								} );
-
-								// Convert the entities list to PHP array syntax.
-								entities = '\'' + emojiArray.filter( function( val ) {
-									return val.length >= 8 ? val : false ;
-								} ).join( '\', \'' ) + '\'';
-
-								// Create a list of all characters used by the emoji list.
-								partials = partials.replace( /-/g, '\n' );
-
-								// Set automatically removes duplicates.
-								partialsSet = new Set( partials.split( '\n' ) );
-
-								// Convert the partials list to PHP array syntax.
-								partials = '\'' + Array.from( partialsSet ).filter( function( val ) {
-									return val.length >= 8 ? val : false ;
-								} ).join( '\', \'' ) + '\'';
-
-								regex = '// START: emoji arrays\n';
-								regex += '\t$entities = array( ' + entities + ' );\n';
-								regex += '\t$partials = array( ' + partials + ' );\n';
-								regex += '\t// END: emoji arrays';
-
-								return regex;
-							}
-						}
-					]
-				},
-				files: [
-					{
-						expand: true,
-						flatten: true,
-						src: [
-							SOURCE_DIR + 'wp-includes/formatting.php'
-						],
-						dest: SOURCE_DIR + 'wp-includes/'
-					}
-				]
-			},
 			'source-maps': {
 				options: {
 					patterns: [
@@ -1231,10 +1141,6 @@ module.exports = function(grunt) {
 		'phpunit'
 	] );
 
-	grunt.registerTask( 'precommit:emoji', [
-		'replace:emoji-regex'
-	] );
-
 	grunt.registerTask( 'precommit', 'Runs test and build tasks in preparation for a commit', function() {
 		var done = this.async();
 		var map = {
@@ -1268,7 +1174,6 @@ module.exports = function(grunt) {
 				'precommit:js',
 				'precommit:css',
 				'precommit:image',
-				'precommit:emoji',
 				'precommit:php'
 			]);
 
@@ -1312,11 +1217,6 @@ module.exports = function(grunt) {
 								taskList.push( 'precommit:' + extension );
 							}
 						} );
-
-						if ( [ 'twemoji.js' ].some( testPath ) ) {
-							grunt.log.writeln( 'twemoji.js has updated. Running `precommit:emoji.' );
-							taskList.push( 'precommit:emoji' );
-						}
 
 						if ( testExtension( 'php' ) ) {
 							grunt.log.writeln( 'PHP files modified. Code formatting will be run.' );
@@ -1376,8 +1276,7 @@ module.exports = function(grunt) {
 		'copy:js',
 		'file_append',
 		'uglify:all',
-		'concat:tinymce',
-		'concat:emoji'
+		'concat:tinymce'
 	] );
 
 	grunt.registerTask( 'build:css', [

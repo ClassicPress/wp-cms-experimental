@@ -436,7 +436,6 @@ function wp_tinymce_inline_scripts() {
 		'wordpress',
 		'wpautoresize',
 		'wpeditimage',
-		'wpemoji',
 		'wpgallery',
 		'wplink',
 		'wpdialogs',
