@@ -45,7 +45,7 @@ jobs:
         split_slow: [ false ]
         # multisite: [ false, true ]
         multisite: [ false ]
-        include:
+        # include:
           # Include jobs for PHP 7.4 with memcached.
           #- php: '7.4'
           #  os: ubuntu-latest
