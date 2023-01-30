@@ -194,18 +194,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 	<h2 class="screen-reader-text hide-if-no-js"><?php _e( 'Filter themes list' ); ?></h2>
 
 	<div class="wp-filter hide-if-no-js">
-		<div class="filter-count">
+		<div class="filter-count" style="display: none;">
 			<span class="count theme-count"></span>
 		</div>
 
-		<ul class="filter-links">
-			<li><a href="#" data-sort="popular"><?php _ex( 'Popular', 'themes' ); ?></a></li>
-			<li><a href="#" data-sort="new"><?php _ex( 'Latest', 'themes' ); ?></a></li>
-			<li><a href="#" data-sort="block-themes"><?php _ex( 'Block Themes', 'themes' ); ?></a></li>
-			<li><a href="#" data-sort="favorites"><?php _ex( 'Favorites', 'themes' ); ?></a></li>
-		</ul>
-
-		<button type="button" class="button drawer-toggle" aria-expanded="false"><?php _e( 'Feature Filter' ); ?></button>
+		<button type="button" class="button drawer-toggle" aria-expanded="false" style="display: none;"><?php _e( 'Feature Filter' ); ?></button>
 
 		<form class="search-form"></form>
 
@@ -267,7 +260,13 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 	<div class="theme-browser content-filterable"></div>
 	<div class="theme-install-overlay wp-full-overlay expanded"></div>
 
-	<p class="no-themes"><?php _e( 'No themes found. Try a different search.' ); ?></p>
+	<p class="no-themes">
+		<b><?php _e( 'Use the search box' ); ?></b><br><br>
+		<?php _e( 'Note that only compatible WordPress themes will show up.' ); ?><br><br>
+		<?php _e( 'If you are using WP CMS, you are encouraged to build your own theme to cover your own needs anyway.' ); ?><br><br>
+		<?php _e( 'Prebuilt themes are like precooked food: usually a piece of shit.' ); ?>
+	</p>
+
 	<span class="spinner"></span>
 
 <?php
