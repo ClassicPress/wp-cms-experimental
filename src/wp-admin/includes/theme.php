@@ -627,6 +627,7 @@ function themes_api( $action, $args = array() ) {
 	if( isset( $res->themes ) and is_array( $res->themes ) ) {
 		$whitelist_of_slugs = array(
 			'yuma-blogger',
+			'classic-coffee-shop',
 		);
 		$whitelisted_themes = array();
 		foreach ( $res->themes as $theme ) {

@@ -132,6 +132,11 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		 */
 		$tabs = apply_filters( 'install_plugins_tabs', $tabs );
 
+		// For now, reset the $tabs array to only contain the search results tab
+		// I don't want to destroy the tabs functionality just yet, but if I do it, make sure to clean up everything
+		$tabs = array();
+		$tabs['search'] = __( 'Search Results' );
+
 		/**
 		 * Filters tabs not associated with a menu item on the Add Plugins screen.
 		 *

@@ -85,6 +85,12 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 			$tab = key( $tabs );
 		}
 
+		// For now, reset the $tabs array to only contain the search results tab
+		// I don't want to destroy the tabs functionality just yet, but if I do it, make sure to clean up everything
+		unset($tabs);
+		$tabs = array();
+		$tabs['search'] = __( 'Search Results' );
+
 		$args = array(
 			'page'     => $paged,
 			'per_page' => $per_page,
