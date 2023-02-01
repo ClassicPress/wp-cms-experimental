@@ -2,7 +2,7 @@
 /**
  * WordPress Administration Privacy Tools API.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 

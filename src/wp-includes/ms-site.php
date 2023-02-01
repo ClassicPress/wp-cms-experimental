@@ -2,7 +2,7 @@
 /**
  * Site API
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Multisite
  * @since 5.1.0
  */

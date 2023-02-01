@@ -2,7 +2,7 @@
 /**
  * Media Library administration panel.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 

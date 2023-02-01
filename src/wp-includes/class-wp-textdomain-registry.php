@@ -2,7 +2,7 @@
 /**
  * Locale API: WP_Textdomain_Registry class
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage i18n
  * @since 6.1.0
  */

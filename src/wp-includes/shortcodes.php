@@ -25,7 +25,7 @@
  *
  * @link https://developer.wordpress.org/plugins/shortcodes/
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Shortcodes
  * @since 2.5.0
  */

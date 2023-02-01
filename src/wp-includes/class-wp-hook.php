@@ -2,7 +2,7 @@
 /**
  * Plugin API: WP_Hook class
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Plugin
  * @since 4.7.0
  */

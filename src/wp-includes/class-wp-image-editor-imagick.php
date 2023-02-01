@@ -2,7 +2,7 @@
 /**
  * WordPress Imagick Image Editor
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Image_Editor
  */
 

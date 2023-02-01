@@ -2,14 +2,14 @@
 /**
  * WP_Application_Passwords class
  *
- * @package WordPress
+ * @package ClassicPress
  * @since   5.6.0
  */
 
 /**
  * Class for displaying, modifying, and sanitizing application passwords.
  *
- * @package WordPress
+ * @package ClassicPress
  */
 #[AllowDynamicProperties]
 class WP_Application_Passwords {

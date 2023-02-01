@@ -2,7 +2,7 @@
 /**
  * Discussion settings administration panel.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 /** WordPress Administration Bootstrap */

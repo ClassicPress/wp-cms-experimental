@@ -2,7 +2,7 @@
 /**
  * Administration API: Core Ajax handlers
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  * @since 2.1.0
  */

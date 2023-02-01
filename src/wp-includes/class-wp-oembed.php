@@ -7,7 +7,7 @@
  * @link https://wordpress.org/support/article/embeds/
  * @link http://oembed.com/
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage oEmbed
  */
 
