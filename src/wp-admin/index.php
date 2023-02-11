@@ -6,7 +6,7 @@
  * please refer to wp-admin/_index.php.
  */
 
-if ( file_exists( __DIR__ . '/../wp-includes/js/dist/a11y.js' ) ) {
+if ( ! file_exists( __DIR__ . '/../wp-includes/js/dist/a11y.js' ) ) {
 	require_once __DIR__ . '/_index.php';
 	return;
 }
