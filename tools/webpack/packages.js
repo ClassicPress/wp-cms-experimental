@@ -21,13 +21,8 @@ const { normalizeJoin, stylesTransform, baseConfig, baseDir } = require( './shar
 const { dependencies } = require( '../../package' );
 
 const exportDefaultPackages = [
-	'api-fetch',
 	'deprecated',
 	'dom-ready',
-	'token-list',
-	'server-side-render',
-	'shortcode',
-	'warning',
 ];
 
 /**
@@ -112,7 +107,7 @@ module.exports = function( env = { environment: 'production', watch: false, buil
 				),
 			} ),
 			new DependencyExtractionPlugin( {
-				injectPolyfill: true,
+				injectPolyfill: false,
 				combineAssets: true,
 				combinedOutputFile: `../../assets/script-loader-packages${ suffix }.php`,
 			} ),
