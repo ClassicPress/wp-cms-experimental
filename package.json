@@ -72,8 +72,6 @@
 	"dependencies": {
 		"@wordpress/a11y": "3.17.1",
 		"@wordpress/api-fetch": "6.14.1",
-		"@wordpress/date": "4.17.1",
-		"@wordpress/deprecated": "3.17.1",
 		"@wordpress/dom-ready": "3.17.1",
 		"@wordpress/hooks": "3.17.1",
 		"@wordpress/i18n": "4.17.1",
