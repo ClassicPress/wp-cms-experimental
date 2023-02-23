@@ -21,13 +21,8 @@ const { normalizeJoin, stylesTransform, baseConfig, baseDir } = require( './shar
 const { dependencies } = require( '../../package' );
 
 const exportDefaultPackages = [
-	'api-fetch',
 	'deprecated',
 	'dom-ready',
-	'token-list',
-	'server-side-render',
-	'shortcode',
-	'warning',
 ];
 
 /**
@@ -62,47 +57,18 @@ module.exports = function( env = { environment: 'production', watch: false, buil
 
 	const vendors = {
 		'lodash.js': 'lodash/lodash.js',
-		'wp-polyfill.js': '@wordpress/babel-preset-default/build/polyfill.js',
-		'wp-polyfill-fetch.js': 'whatwg-fetch/dist/fetch.umd.js',
-		'wp-polyfill-element-closest.js': 'element-closest/element-closest.js',
-		'wp-polyfill-node-contains.js': 'polyfill-library/polyfills/__dist/Node.prototype.contains/raw.js',
-		'wp-polyfill-url.js': 'core-js-url-browser/url.js',
-		'wp-polyfill-dom-rect.js': 'polyfill-library/polyfills/__dist/DOMRect/raw.js',
-		'wp-polyfill-formdata.js': 'formdata-polyfill/FormData.js',
-		'wp-polyfill-object-fit.js': 'objectFitPolyfill/src/objectFitPolyfill.js',
 		'moment.js': 'moment/moment.js',
-		'regenerator-runtime.js': 'regenerator-runtime/runtime.js',
 	};
 
 	const minifiedVendors = {
 		'lodash.min.js': 'lodash/lodash.min.js',
-		'wp-polyfill.min.js': '@wordpress/babel-preset-default/build/polyfill.min.js',
-		'wp-polyfill-formdata.min.js': 'formdata-polyfill/formdata.min.js',
-		'wp-polyfill-url.min.js': 'core-js-url-browser/url.min.js',
-		'wp-polyfill-object-fit.min.js': 'objectFitPolyfill/dist/objectFitPolyfill.min.js',
 		'moment.min.js': 'moment/min/moment.min.js',
-	};
-
-	const minifyVendors = {
-		'regenerator-runtime.min.js': 'regenerator-runtime/runtime.js',
-		'wp-polyfill-fetch.min.js': 'whatwg-fetch/dist/fetch.umd.js',
-		'wp-polyfill-element-closest.min.js': 'element-closest/element-closest.js',
-		'wp-polyfill-node-contains.min.js': 'polyfill-library/polyfills/__dist/Node.prototype.contains/raw.js',
-		'wp-polyfill-dom-rect.min.js': 'polyfill-library/polyfills/__dist/DOMRect/raw.js',
 	};
 
 	const developmentCopies = mapVendorCopies( vendors, buildTarget );
 	const minifiedCopies = mapVendorCopies( minifiedVendors, buildTarget );
-	const minifyCopies = mapVendorCopies( minifyVendors, buildTarget ).map( ( copyCommand ) => {
-		return {
-			...copyCommand,
-			transform: ( content ) => {
-				return UglifyJS.minify( content.toString() ).code;
-			},
-		};
-	} );
 
-	let vendorCopies = mode === "development" ? developmentCopies : [ ...minifiedCopies, ...minifyCopies ];
+	let vendorCopies = mode === "development" ? developmentCopies : [ ...minifiedCopies ];
 
 	let cssCopies = packages.map( ( packageName ) => ( {
 		from: normalizeJoin(baseDir, `node_modules/@wordpress/${ packageName }/build-style/*.css` ),
@@ -141,7 +107,7 @@ module.exports = function( env = { environment: 'production', watch: false, buil
 				),
 			} ),
 			new DependencyExtractionPlugin( {
-				injectPolyfill: true,
+				injectPolyfill: false,
 				combineAssets: true,
 				combinedOutputFile: `../../assets/script-loader-packages${ suffix }.php`,
 			} ),
