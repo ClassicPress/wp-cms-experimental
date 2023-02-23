@@ -2,7 +2,7 @@
 /**
  * Build Network Administration Menu.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Multisite
  * @since 3.1.0
  */
@@ -103,7 +103,7 @@ if ( current_user_can( 'update_plugins' ) && $update_data['counts']['plugins'] )
 	$menu[20] = array( __( 'Plugins' ), 'manage_network_plugins', 'plugins.php', '', 'menu-top menu-icon-plugins', 'menu-plugins', 'dashicons-admin-plugins' );
 }
 $submenu['plugins.php'][5]  = array( __( 'Installed Plugins' ), 'manage_network_plugins', 'plugins.php' );
-$submenu['plugins.php'][10] = array( _x( 'Add New', 'plugin' ), 'install_plugins', 'plugin-install.php' );
+$submenu['plugins.php'][10] = array( _x( 'Add New', 'plugin' ), 'install_plugins', 'plugin-install.php?s=classicpress&tab=search&type=term' );
 $submenu['plugins.php'][15] = array( __( 'Plugin File Editor' ), 'edit_plugins', 'plugin-editor.php' );
 
 $menu[25] = array( __( 'Settings' ), 'manage_network_options', 'settings.php', '', 'menu-top menu-icon-settings', 'menu-settings', 'dashicons-admin-settings' );

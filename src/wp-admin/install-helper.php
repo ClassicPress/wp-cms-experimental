@@ -32,7 +32,7 @@
  *         ++$error_count;
  *     }
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Plugin
  */
 

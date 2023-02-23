@@ -2,7 +2,7 @@
 /**
  * Widget API: WP_Widget_Meta class
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Widgets
  * @since 4.4.0
  */

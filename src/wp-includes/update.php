@@ -2,7 +2,7 @@
 /**
  * A simple set of functions to check the WordPress.org Version Update service.
  *
- * @package WordPress
+ * @package ClassicPress
  * @since 2.3.0
  */
 
@@ -81,12 +81,10 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	}
 
 	if ( is_multisite() ) {
-		$num_blogs         = get_blog_count();
 		$wp_install        = network_site_url();
 		$multisite_enabled = 1;
 	} else {
 		$multisite_enabled = 0;
-		$num_blogs         = 1;
 		$wp_install        = home_url( '/' );
 	}
 
@@ -98,8 +96,6 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 		'locale'             => $locale,
 		'mysql'              => $mysql_version,
 		'local_package'      => isset( $wp_local_package ) ? $wp_local_package : '',
-		'blogs'              => $num_blogs,
-		'users'              => get_user_count(),
 		'multisite_enabled'  => $multisite_enabled,
 		'initial_db_version' => get_site_option( 'initial_db_version' ),
 		'extensions'         => array_combine( $extensions, array_map( 'phpversion', $extensions ) ),
@@ -154,8 +150,6 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	 *     @type string $locale             The locale to retrieve updates for.
 	 *     @type string $mysql              MySQL version number.
 	 *     @type string $local_package      The value of the $wp_local_package global, when set.
-	 *     @type int    $blogs              Number of sites on this WordPress installation.
-	 *     @type int    $users              Number of users on this WordPress installation.
 	 *     @type int    $multisite_enabled  Whether this WordPress installation uses Multisite.
 	 *     @type int    $initial_db_version Database version of WordPress at time of installation.
 	 * }

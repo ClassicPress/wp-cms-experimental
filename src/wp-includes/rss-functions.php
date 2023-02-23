@@ -2,7 +2,7 @@
 /**
  * Deprecated. Use rss.php instead.
  *
- * @package WordPress
+ * @package ClassicPress
  * @deprecated 2.1.0
  */
 

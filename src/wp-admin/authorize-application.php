@@ -2,7 +2,7 @@
 /**
  * Authorize Application Screen
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 

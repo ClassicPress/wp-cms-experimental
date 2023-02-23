@@ -2,7 +2,7 @@
 /**
  * Site API: WP_Site_Query class
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Sites
  * @since 4.6.0
  */

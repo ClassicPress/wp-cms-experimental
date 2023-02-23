@@ -2,7 +2,7 @@
 /**
  * Taxonomy API: WP_Term class
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Taxonomy
  * @since 4.4.0
  */

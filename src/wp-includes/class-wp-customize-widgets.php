@@ -2,7 +2,7 @@
 /**
  * WordPress Customize Widgets classes
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Customize
  * @since 3.9.0
  */

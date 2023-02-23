@@ -2,7 +2,7 @@
 /**
  * Build Administration Menu.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 
@@ -271,7 +271,7 @@ $submenu['plugins.php'][5] = array( __( 'Installed Plugins' ), 'activate_plugins
 
 if ( ! is_multisite() ) {
 	/* translators: Add new plugin. */
-	$submenu['plugins.php'][10] = array( _x( 'Add New', 'plugin' ), 'install_plugins', 'plugin-install.php' );
+	$submenu['plugins.php'][10] = array( _x( 'Add New', 'plugin' ), 'install_plugins', 'plugin-install.php?s=classicpress&tab=search&type=term' );
 	$submenu['plugins.php'][15] = array( __( 'Plugin File Editor' ), 'edit_plugins', 'plugin-editor.php' );
 }
 

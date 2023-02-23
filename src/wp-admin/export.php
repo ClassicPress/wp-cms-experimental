@@ -2,7 +2,7 @@
 /**
  * WordPress Export Administration Screen
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 

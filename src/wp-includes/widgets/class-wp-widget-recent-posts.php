@@ -2,7 +2,7 @@
 /**
  * Widget API: WP_Widget_Recent_Posts class
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Widgets
  * @since 4.4.0
  */

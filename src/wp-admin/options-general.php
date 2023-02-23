@@ -2,7 +2,7 @@
 /**
  * General settings administration panel.
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Administration
  */
 

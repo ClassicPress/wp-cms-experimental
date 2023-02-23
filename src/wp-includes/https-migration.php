@@ -2,7 +2,7 @@
 /**
  * HTTPS migration functions.
  *
- * @package WordPress
+ * @package ClassicPress
  * @since 5.7.0
  */
 
